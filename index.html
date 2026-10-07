@@ -870,7 +870,7 @@ function mood(m){const t=$('#talkMasc');t.classList.remove('happy','hmm');void t
 function burstSVG(fill){let p='';for(let i=0;i<32;i++){const r=i%2?72:98,a=i*Math.PI/16;p+=`${100+r*Math.cos(a)},${100+r*Math.sin(a)} `}return `<svg viewBox="0 0 200 200" aria-hidden="true"><polygon points="${p}" fill="${fill||'#FFC83D'}"/><circle cx="100" cy="100" r="66" fill="#FFE08A"/></svg>`}
 
 /* ---------- dados ---------- */
-const LN={A:'a',B:'bê',C:'cê',D:'dê',E:'é',F:'éfe',G:'gê',H:'agá',I:'i',J:'jota',K:'cá',L:'éle',M:'ême',N:'êne',O:'oh',P:'pê',Q:'quê',R:'érre',S:'ésse',T:'tê',U:'u',V:'vê',W:'dáblio',X:'xis',Y:'ípsilon',Z:'zê'};
+const LN={A:'a',B:'bê',C:'cê',D:'dê',E:'eh',F:'éfe',G:'gê',H:'agá',I:'i',J:'jota',K:'cá',L:'éle',M:'ême',N:'êne',O:'oh',P:'pê',Q:'quê',R:'érre',S:'ésse',T:'tê',U:'u',V:'vê',W:'dáblio',X:'xis',Y:'ípsilon',Z:'zê'};
 const FON={A:'/a/',B:'/b/',C:'/k/ em CA, CO, CU e /s/ em CE, CI',D:'/d/',E:'/e/ ou /ɛ/',F:'/f/',G:'/g/ em GA, GO, GU e /ʒ/ em GE, GI',H:'não tem som no começo da palavra',I:'/i/',J:'/ʒ/',K:'/k/',L:'/l/',M:'/m/',N:'/n/',O:'/o/ ou /ɔ/',P:'/p/',Q:'/k/',R:'/ʁ/, forte no começo da palavra',S:'/s/',T:'/t/',U:'/u/',V:'/v/',W:'/u/ ou /v/',X:'/ʃ/, o som de “ch”',Y:'/i/',Z:'/z/'};
 const WORDS={
 A:[['A·BE·LHA','🐝'],['A·VI·ÃO','✈️'],['A·BA·CA·XI','🍍']],B:[['BO·LA','⚽'],['BA·NA·NA','🍌'],['BOR·BO·LE·TA','🦋']],
@@ -929,7 +929,7 @@ function loadVoice(){try{TTS.list=speechSynthesis.getVoices().filter(v=>/^pt/i.t
 if(TTS.ok){loadVoice();try{speechSynthesis.addEventListener('voiceschanged',loadVoice)}catch(e){}}
 function speak(text,queue){if(!TTS.ok||!S.som||!text)return;try{if(!queue){speechSynthesis.cancel();TTS.pend=[]}
   TTS.pend.push(...(text.match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[text]).map(s=>s.trim()).filter(Boolean));clearTimeout(TTS.t);
-  TTS.t=setTimeout(()=>{const ps=TTS.pend;TTS.pend=[];ps.forEach(p=>{const u=new SpeechSynthesisUtterance(p);u.lang='pt-BR';if(TTS.voice)u.voice=TTS.voice;u.rate=S.vel;u.pitch=1.05;speechSynthesis.speak(u)})},queue?10:70)}catch(e){}}
+  TTS.t=setTimeout(()=>{const ps=TTS.pend;TTS.pend=[];ps.forEach(p=>{p=p.replace(/^([áàâéêíóôú])([.!?]*)$/i,(m,c,q)=>({'á':'a','à':'a','â':'a','é':'eh','ê':'eh','í':'i','ó':'oh','ô':'oh','ú':'u'})[c.toLowerCase()]+q);const u=new SpeechSynthesisUtterance(p);u.lang='pt-BR';if(TTS.voice)u.voice=TTS.voice;u.rate=S.vel;u.pitch=1.05;speechSynthesis.speak(u)})},queue?10:70)}catch(e){}}
 function hush(){try{clearTimeout(TTS.t);TTS.pend=[];TTS.ok&&speechSynthesis.cancel()}catch(e){}}
 const LD={A:'A',B:'bê',C:'cê',D:'dê',E:'E',F:'efe',G:'gê',H:'agá',I:'I',J:'jota',K:'cá',L:'ele',M:'eme',N:'ene',O:'O',P:'pê',Q:'quê',R:'erre',S:'esse',T:'tê',U:'U',V:'vê',W:'dáblio',X:'xis',Y:'ípsilon',Z:'zê'};
 const fmt=(t,say)=>t.replace(/\{(\w)\}/g,(m,l)=>say?(LN[l]||l):l);
