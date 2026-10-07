@@ -870,7 +870,7 @@ function mood(m){const t=$('#talkMasc');t.classList.remove('happy','hmm');void t
 function burstSVG(fill){let p='';for(let i=0;i<32;i++){const r=i%2?72:98,a=i*Math.PI/16;p+=`${100+r*Math.cos(a)},${100+r*Math.sin(a)} `}return `<svg viewBox="0 0 200 200" aria-hidden="true"><polygon points="${p}" fill="${fill||'#FFC83D'}"/><circle cx="100" cy="100" r="66" fill="#FFE08A"/></svg>`}
 
 /* ---------- dados ---------- */
-const LN={A:'á',B:'bê',C:'cê',D:'dê',E:'é',F:'éfe',G:'gê',H:'agá',I:'i',J:'jota',K:'cá',L:'éle',M:'ême',N:'êne',O:'ó',P:'pê',Q:'quê',R:'érre',S:'ésse',T:'tê',U:'u',V:'vê',W:'dáblio',X:'xis',Y:'ípsilon',Z:'zê'};
+const LN={A:'a',B:'bê',C:'cê',D:'dê',E:'é',F:'éfe',G:'gê',H:'agá',I:'i',J:'jota',K:'cá',L:'éle',M:'ême',N:'êne',O:'oh',P:'pê',Q:'quê',R:'érre',S:'ésse',T:'tê',U:'u',V:'vê',W:'dáblio',X:'xis',Y:'ípsilon',Z:'zê'};
 const FON={A:'/a/',B:'/b/',C:'/k/ em CA, CO, CU e /s/ em CE, CI',D:'/d/',E:'/e/ ou /ɛ/',F:'/f/',G:'/g/ em GA, GO, GU e /ʒ/ em GE, GI',H:'não tem som no começo da palavra',I:'/i/',J:'/ʒ/',K:'/k/',L:'/l/',M:'/m/',N:'/n/',O:'/o/ ou /ɔ/',P:'/p/',Q:'/k/',R:'/ʁ/, forte no começo da palavra',S:'/s/',T:'/t/',U:'/u/',V:'/v/',W:'/u/ ou /v/',X:'/ʃ/, o som de “ch”',Y:'/i/',Z:'/z/'};
 const WORDS={
 A:[['A·BE·LHA','🐝'],['A·VI·ÃO','✈️'],['A·BA·CA·XI','🍍']],B:[['BO·LA','⚽'],['BA·NA·NA','🍌'],['BOR·BO·LE·TA','🦋']],
@@ -1465,7 +1465,7 @@ function renderProf(){
       el('p',{},'A narração usa a voz em português instalada no próprio aparelho ou navegador, por isso ela muda de um lugar para outro. A página escolhe sozinha a voz mais natural que encontrar; aqui você pode trocar e ajustar a velocidade.'),
       el('div',{class:'field'},el('label',{for:'vozSel'},'Voz'),sel),
       el('div',{class:'field'},el('label',{for:'velRange'},'Velocidade da fala (para a esquerda, mais devagar)'),vel),
-      el('div',{},el('button',{class:'btn sm',type:'button',onclick:()=>{const s=S.som;S.som=true;speak(`Olá${S.nome?', '+nm():''}! Eu sou o Rabisco. Esta é a letra á. Á de abelha.`);S.som=s}},'Testar a voz')),
+      el('div',{},el('button',{class:'btn sm',type:'button',onclick:()=>{const s=S.som;S.som=true;speak(`Olá${S.nome?', '+nm():''}! Eu sou o Rabisco. Esta é a letra a. A de abelha.`);S.som=s}},'Testar a voz')),
       el('div',{class:'panel'},el('h3',{},'Para uma voz mais natural'),el('ul',{},[
         TTS.ok?(TTS.list.length?`Este aparelho tem ${TTS.list.length} voz(es) em português.`:'Este aparelho não informou nenhuma voz em português. A fala pode sair com sotaque estrangeiro ou não sair.'):'Este navegador não oferece leitura em voz alta. As frases continuam aparecendo no balão, para o adulto ler.',
         'No computador, o navegador Microsoft Edge costuma oferecer vozes mais naturais: são as que trazem “Natural” no nome.',
