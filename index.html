@@ -931,6 +931,7 @@ function speak(text,queue){if(!TTS.ok||!S.som||!text)return;try{if(!queue){speec
   TTS.pend.push(...(text.match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[text]).map(s=>s.trim()).filter(Boolean));clearTimeout(TTS.t);
   TTS.t=setTimeout(()=>{const ps=TTS.pend;TTS.pend=[];ps.forEach(p=>{const u=new SpeechSynthesisUtterance(p);u.lang='pt-BR';if(TTS.voice)u.voice=TTS.voice;u.rate=S.vel;u.pitch=1.05;speechSynthesis.speak(u)})},queue?10:70)}catch(e){}}
 function hush(){try{clearTimeout(TTS.t);TTS.pend=[];TTS.ok&&speechSynthesis.cancel()}catch(e){}}
+const LD={A:'A',B:'bê',C:'cê',D:'dê',E:'E',F:'efe',G:'gê',H:'agá',I:'I',J:'jota',K:'cá',L:'ele',M:'eme',N:'ene',O:'O',P:'pê',Q:'quê',R:'erre',S:'esse',T:'tê',U:'U',V:'vê',W:'dáblio',X:'xis',Y:'ípsilon',Z:'zê'};
 const fmt=(t,say)=>t.replace(/\{(\w)\}/g,(m,l)=>say?(LN[l]||l):l);
 let AC=null,NB=null;
 function actx(){if(!S.som)return null;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC}catch(e){return null}}
@@ -1199,7 +1200,7 @@ const GAMES=[
     const mineL=l===ini();
     const close=()=>{m.remove();hush();if(d.seen.size>=5&&!d.done){d.done=true;api.win('Você já conheceu 5 letras! Pode continuar explorando.',grid);stage.classList.remove('locked')}};
     const m=el('div',{class:'amodal kid',onclick:e=>{if(e.target===m)close()}},el('div',{class:'apanel'},
-      tile(l,'xl','div'),el('div',{class:'fon'},el('span',{class:'nm'},'Nome: '+LN[l]),el('span',{class:'fon-a adult'},'Para o adulto: '+(l==='H'?'':'som ')+FON[l])),row,mineL?el('div',{class:'row'},el('span',{style:'font-weight:600;font-size:22px'},`${l} de`),cracha(S.nome,{mark:true,small:true})):null,
+      tile(l,'xl','div'),el('div',{class:'fon'},el('span',{class:'nm'},'Nome: '+LD[l]),el('span',{class:'fon-a adult'},'Para o adulto: '+(l==='H'?'':'som ')+FON[l])),row,mineL?el('div',{class:'row'},el('span',{style:'font-weight:600;font-size:22px'},`${l} de`),cracha(S.nome,{mark:true,small:true})):null,
       el('div',{class:'nav'},el('button',{class:'btn sm soft',type:'button',onclick:()=>open((k+25)%26)},'◀ Anterior'),el('button',{class:'btn sm',type:'button',onclick:()=>speak(say())},E('🔊'),' Ouvir'),el('button',{class:'btn sm soft',type:'button',onclick:()=>open((k+1)%26)},'Próxima ▶'),el('button',{class:'btn sm go',type:'button',onclick:close},'Fechar'))));
     const say=()=>`${LN[l]}. ${LN[l]} de ${ws.map(w=>w[0].toLowerCase()).join(', ')}.`+(mineL?` E ${LN[l]} de ${nm()}!`:'');
     $('#v-game').append(m);speak(say())};
