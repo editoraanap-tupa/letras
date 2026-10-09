@@ -179,23 +179,28 @@ a.act:hover .rab{animation-duration:.6s}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-size:12.5px;font-weight:800;padding:2px 10px;border-radius:999px;background:color-mix(in srgb,var(--ac) 18%,var(--surface));border:2px solid var(--ac)}
 .prog{display:grid;gap:4px;font-size:13.5px;font-weight:800}
+.prog.fim{color:var(--ok,#2E8B3E)}
 .bar{height:14px;border-radius:999px;background:var(--bg2);overflow:hidden;border:2px solid var(--line)}
 .bar i{display:block;height:100%;border-radius:999px;background:repeating-linear-gradient(90deg,var(--c2) 0 14px,#FFD25A 14px 20px)}
 .act .btn{margin-top:auto;align-self:flex-start}
 .act-n{position:absolute;z-index:3;left:14px;top:14px;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ac);color:#fff;font-family:var(--brand);font-weight:800;font-size:22px;box-shadow:0 0 0 4px #fff,0 4px 0 color-mix(in srgb,var(--ac) 55%,#000)}
+.act-b h3{order:0}.act-b>p{order:1}.act-b .tags{order:2}.act-b .prog{order:3}.act-b .btn{order:4}
 @media (min-width:860px){
  .acts{grid-template-columns:1fr 1fr;gap:26px 22px}
- .act{display:grid;grid-template-columns:minmax(0,55%) minmax(0,1fr);align-items:center}
+ .act{display:grid;grid-template-columns:minmax(0,57%) minmax(0,1fr);align-items:stretch}
  .act .th-w{align-self:center;padding:12px 0 12px 12px}
  .act .thumb{margin:0;border-radius:20px;box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 40%,#fff)}
  .act .th-b{right:8px;bottom:20px;font-size:13.5px;padding:2px 10px 2px 7px}
- .act-n{left:6px;top:6px;width:40px;height:40px;font-size:20px}
- .act-b{padding:18px 18px 18px 16px;height:100%;justify-content:center}
- .act .btn{margin-top:6px}
- .act-b h3{font-size:22px}
- .act-b p{font-size:14.5px}
- .act .tag{font-size:12px}
+ .act-n{left:20px;top:20px;width:38px;height:38px;font-size:19px}
+ .act-b{padding:16px 18px 16px 16px;gap:7px;justify-content:center}
+ .act-b h3{order:0;font-size:22px;line-height:1.1}
+ .act-b>p{order:1;font-size:14.5px;line-height:1.4}
+ .act-b .tags{order:2;gap:4px}
+ .act-b .prog{order:3}
+ .act-b .btn{order:4;margin-top:4px;min-height:44px;font-size:15.5px;padding:6px 16px;white-space:nowrap}
+ .act .tag{font-size:11.5px;padding:1px 8px;border-width:1.5px}
 }
+
 .act.soon{box-shadow:none;border:4px dashed var(--line);background:color-mix(in srgb,var(--surface) 60%,transparent)}
 .act.soon .thumb{background:var(--bg2);display:grid;place-items:center;font-size:64px;margin:0;border-radius:0}
 .act.soon .thumb .tw{position:static;translate:none;opacity:.55;animation:floaty 3s ease-in-out infinite}
@@ -214,7 +219,7 @@ a.act:hover .rab{animation-duration:.6s}
 .ab-i .tw{width:30px;height:30px}
 .ab-c h3{font-size:19px;font-weight:800}
 .ab-c p{font-size:15px;color:var(--muted);font-weight:600;line-height:1.42}
-@media(max-width:600px){.ab-h{flex-direction:column;align-items:flex-start;gap:8px;padding:16px 18px}.ab-g{padding:14px}}
+@media(max-width:600px){.ab-h{flex-direction:column;align-items:flex-start;gap:8px;padding:16px 18px}.ab-g{padding:12px;gap:10px;grid-template-columns:1fr 1fr}.ab-c{padding:12px 12px 13px;border-radius:18px}.ab-i{width:40px;height:40px;border-radius:12px;margin-bottom:4px}.ab-i .tw{width:24px;height:24px}.ab-c h3{font-size:16px}.ab-c p{font-size:13px;line-height:1.35}}
 .foot{margin-top:40px;color:var(--muted);font-size:15px}
 .sfoot{position:relative;background:var(--surface);border-radius:30px;overflow:hidden;box-shadow:inset 0 0 0 3px var(--line),0 6px 0 var(--line)}
 .sfoot::before{content:"";display:block;height:8px;background:linear-gradient(90deg,var(--c1) 0 16.6%,var(--c2) 0 33.3%,var(--c3) 0 50%,var(--c4) 0 66.6%,var(--c5) 0 83.3%,var(--c6) 0)}
@@ -376,6 +381,7 @@ html.hc :focus-visible{outline:4px solid #FFB000!important;outline-offset:2px}
       <li>Sessões curtas, de 10 a 15 minutos, funcionam melhor.</li>
       <li>Fique perto e brinque junto: a conversa vale mais que a tela.</li>
       <li>No botão redondo azul, no canto da tela, dá para deixar a voz mais devagar, as letras maiores ou ligar o alto contraste.</li>
+      <li>Para Libras, toque no botão azul com as mãos, no lado direito da tela: o VLibras traduz os textos para Libras.</li>
       <li>O nome e o avanço ficam guardados só neste aparelho.</li>
     </ul>
   </div>
@@ -397,7 +403,7 @@ html.hc :focus-visible{outline:4px solid #FFB000!important;outline-offset:2px}
       <li><span>🎯</span>Objetivos dos campos de experiências “Escuta, fala, pensamento e imaginação” e outros, indicados em cada brincadeira.</li>
       <li><span>🔁</span>Mecânicas variadas: arrastar, montar, ouvir, escolher, desenhar a letra, ordenar histórias.</li>
       <li><span>🗣️</span>Tudo é lido em voz alta: a criança participa antes de saber ler.</li>
-      <li><span>♿</span>Acessibilidade: velocidade da voz, letras maiores, alto contraste e menos movimento.</li>
+      <li><span>♿</span>Acessibilidade: tradução para Libras (VLibras), velocidade da voz, letras maiores, alto contraste e menos movimento.</li>
       <li><span>🔒</span>Sem cadastro, sem anúncios e sem coleta de dados das crianças.</li>
     </ul>
     <h3>Sugestão de percurso</h3>
@@ -837,11 +843,11 @@ ${NOTA(60,80,1,'#EE4F7B')}${NOTA(236,74,.9,'#2490D6')}${NOTA(210,104,.7,'#3FA535
 ].forEach(([e,c,t,d])=>$('#abG').append(el('div',{class:'ab-c',style:`--ac:var(--${c})`},el('span',{class:'ab-i'},E(e)),el('h3',{},t),el('p',{},d))));
 const acts=$('#acts');
 ATIVIDADES.forEach((a,ai)=>{const all=store.get(a.chave,{})||{},p=nome&&all[nome]?Object.keys(all[nome].s||{}).length:0;
-  acts.append(el('a',{class:'act',href:a.href,style:`--ac:var(--${a.cor})`,'aria-label':`Atividade ${ai+1}: ${a.t}`},el('span',{class:'act-n','aria-hidden':'true'},String(ai+1)),a.thumb(),el('div',{class:'act-b'},
+  acts.append(el('a',{class:'act',href:a.href,style:`--ac:var(--${a.cor})`,'aria-label':`Atividade ${ai+1}: ${a.t}`},(()=>{const tw=a.thumb();tw.append(el('span',{class:'act-n','aria-hidden':'true'},String(ai+1)));return tw})(),el('div',{class:'act-b'},
     el('div',{class:'tags'},a.tags.map(x=>el('span',{class:'tag'},x)),a.mascote?el('span',{class:'tag'},`Com ${a.art} ${a.mascote}`):null),
     el('h3',{},a.t),el('p',{},a.d),
-    p?el('div',{class:'prog'},`${tc(nome)} já acendeu ${Math.min(p,a.paradas)} de ${a.paradas} paradas`,el('div',{class:'bar'},el('i',{style:`width:${Math.min(100,p/a.paradas*100)}%`}))):null,
-    el('span',{class:'btn go'},p?'Continuar ':'Brincar ',el('span',{'aria-hidden':'true'},'➜')))))});
+    p?el('div',{class:'prog'+(p>=a.paradas?' fim':'')},p>=a.paradas?`⭐ ${tc(nome)} completou a trilha!`:`${tc(nome)} já acendeu ${p} de ${a.paradas} paradas`,el('div',{class:'bar'},el('i',{style:`width:${Math.min(100,p/a.paradas*100)}%`}))):null,
+    el('span',{class:'btn go'},p>=a.paradas?'Brincar de novo ':p?'Continuar ':'Brincar ',el('span',{'aria-hidden':'true'},'➜')))))});
 for(let k=0;k<EM_BREVE;k++)acts.append(el('div',{class:'act soon'},el('div',{class:'thumb'},E('🎁')),el('div',{class:'act-b'},el('h3',{},'Em breve'),el('p',{},'Uma nova atividade vai aparecer aqui.'))));
 $('#actN').textContent=`${ATIVIDADES.length} atividades · ${ATIVIDADES.reduce((n,a)=>n+a.paradas,0)} brincadeiras · 4 e 5 anos`;
 /* ---------- menu do topo: nome, famílias, professores ---------- */
@@ -884,12 +890,16 @@ function openAcc(){let p=document.getElementById('accPanel');if(p){p.remove();bt
     chips('Tamanho das letras',[['Normal',0],['Grande',1],['Maior',2]],(v)=>(a.z||0)===v,(v)=>{const x=ST.get('acc',{});x.z=v;ST.set('acc',x);applyAcc()}),
     chips('Alto contraste',[['Não',0],['Sim',1]],(v)=>(a.hc?1:0)===v,(v)=>{const x=ST.get('acc',{});x.hc=!!v;ST.set('acc',x);applyAcc()}),
     chips('Menos movimento',[['Não',0],['Sim',1]],(v)=>(a.calmo?1:0)===v,(v)=>{const x=ST.get('acc',{});x.calmo=!!v;ST.set('acc',x);applyAcc()}),
-    mk('p',{class:'acc-n'},'As escolhas ficam guardadas neste aparelho e valem para todas as atividades.'));
+    mk('p',{class:'acc-n'},mk('b',{},'Libras: '),'toque no botão azul com as mãos, no lado direito da tela, e depois em um texto. O VLibras traduz para Libras.'),mk('p',{class:'acc-n'},'As escolhas ficam guardadas neste aparelho e valem para todas as atividades.'));
   document.body.append(p);btn.setAttribute('aria-expanded','true');p.querySelector('.acc-c').focus()}
 const btn=mk('button',{type:'button',id:'accBtn',class:'acc-b','aria-label':'Acessibilidade: voz, tamanho das letras e contraste','aria-expanded':'false',onclick:openAcc,html:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4" r="2.2"/><path d="M4 7.5q8 2 16 0l.6 1.9q-3.6 1.2-6.3 1.5v3.3l2.6 7.3-1.9.7-3-6.7-3 6.7-1.9-.7 2.6-7.3v-3.3Q6.9 10.6 3.4 9.4z"/></svg>'});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('accPanel'))openAcc()});
 document.addEventListener('pointerdown',e=>{const p=document.getElementById('accPanel');if(p&&!p.contains(e.target)&&e.target!==btn&&!btn.contains(e.target))openAcc()},true);
-function mount(){if(!document.getElementById('accBtn'))document.body.append(btn);counter()}
+/* ===== Libras (VLibras, do Governo Federal) ===== */
+function libras(){try{if(location.protocol==='file:'||window.__vl)return;window.__vl=1;
+  const sc=document.createElement('script');sc.src='https://vlibras.gov.br/app/vlibras-plugin.js';sc.async=true;
+  sc.onload=()=>{try{new window.VLibras.Widget('https://vlibras.gov.br/app')}catch(e){}};document.head.append(sc)}catch(e){}}
+function mount(){if(!document.getElementById('accBtn'))document.body.append(btn);counter();libras()}
 /* ===== contador de acessos (hits.sh: sem cookies e sem dados pessoais) ===== */
 function counter(){try{if(location.hostname!=='editoraanap-tupa.github.io'||document.getElementById('visitas'))return;
   let f=(location.pathname.split('/').pop()||'index.html').replace(/\.html$/,'')||'index';const portal=f==='index';
