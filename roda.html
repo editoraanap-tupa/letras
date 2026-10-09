@@ -117,6 +117,8 @@ main{padding-block:16px 56px;overflow-x:clip}
 .stop:hover .pad{transform:scale(1.06)}
 .stop:active .pad{transform:translateY(4px);box-shadow:none}
 .stop .lbl{background:var(--surface);border-radius:12px;padding:3px 10px;font-family:var(--display);font-weight:600;font-size:15px;line-height:1.15;text-transform:uppercase;letter-spacing:.02em;text-align:center;box-shadow:0 3px 0 rgba(31,42,68,.18)}
+.stop .falta{position:absolute;left:50%;bottom:-8px;translate:-50% 0;white-space:nowrap;padding:1px 9px;border-radius:999px;background:var(--c1);color:#fff;font:800 13px/1.4 var(--body,system-ui);box-shadow:0 0 0 2px #fff}
+.stop>.falta{position:relative;left:auto;bottom:auto;translate:none;margin:-16px 0 -2px;z-index:2;font-size:14px;padding:2px 11px}
 .stop .badge{position:absolute;top:-12px;right:-12px;font-size:34px;filter:drop-shadow(0 2px 0 rgba(0,0,0,.2))}
 .stop .fig{position:absolute;bottom:-12px;left:-14px;font-size:38px;transform:rotate(-12deg);filter:drop-shadow(0 2px 0 rgba(0,0,0,.25))}
 .stop.next .pad{animation:halo 1.4s ease-in-out infinite}
@@ -149,7 +151,10 @@ main{padding-block:16px 56px;overflow-x:clip}
 .stage{position:relative;background-color:var(--surface);background-image:radial-gradient(color-mix(in srgb,var(--sc) 20%,transparent) 2.5px,transparent 3.5px);background-size:28px 28px;border:5px solid color-mix(in srgb,var(--sc) 55%,var(--surface));border-radius:32px;padding:clamp(14px,3vw,28px);min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;overflow:hidden}
 .stage>*{animation:rise .35s ease both}
 .stage.locked button{pointer-events:none}
-.gfoot{display:flex;justify-content:center;margin-top:14px;min-height:66px}
+.gfoot{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px 16px;margin-top:14px;min-height:66px}
+.back2{font-size:17px;min-height:52px;order:-1}
+.backt{min-height:50px;padding:6px 16px 6px 10px;font-size:18px;gap:6px}
+.backt .tw{width:30px;height:30px}
 #next{font-size:24px;min-height:66px;padding-inline:36px;border-radius:24px;animation:pulse 1s ease-in-out infinite}
 details.tip{margin-top:6px;background:var(--bg2);border-radius:18px;padding:10px 16px;font-size:15.5px}
 details.tip summary{font-weight:800;cursor:pointer}
@@ -1499,6 +1504,47 @@ button.pcard:active,.capa:active,.dia:active,.numb:active,.mom:active,.lapis:act
 .fs.gira2>*{animation:girar 8s linear infinite}
 .rodinha{width:clamp(150px,38vw,230px)}.xilo{align-items:flex-end}.tecla:nth-child(1){height:clamp(170px,40vw,240px)}.tecla:nth-child(2){height:clamp(155px,37vw,220px)}.tecla:nth-child(3){height:clamp(140px,34vw,200px)}.tecla:nth-child(4){height:clamp(125px,31vw,180px)}
 .rodakids.gira .rk2{animation:girar 6s linear reverse}
+
+/* ===== extras: acessibilidade e acabamento ===== */
+html.az body{zoom:var(--az,1)}
+.acc-b{position:fixed;right:14px;bottom:14px;z-index:900;display:grid;place-items:center;width:54px;height:54px;padding:0;border:0;border-radius:50%;background:#2490D6;color:#fff;box-shadow:0 0 0 4px #fff,0 6px 14px rgba(0,0,0,.25);cursor:pointer}
+.acc-b svg{width:30px;height:30px;fill:currentColor}
+.acc-b:hover{background:#1B6FB0}
+.acc-p{position:fixed;right:14px;bottom:80px;z-index:901;width:min(calc(100vw - 28px),330px);max-height:calc(100vh - 110px);overflow:auto;padding:14px 16px 12px;border-radius:20px;background:#fff;color:#1B2A5E;box-shadow:0 0 0 3px #2490D6,0 14px 30px rgba(0,0,0,.28);font:600 15px/1.35 'Nunito',system-ui,sans-serif;animation:accIn .2s ease both}
+@keyframes accIn{from{opacity:0;transform:translateY(10px)}}
+.acc-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.acc-h b{font-size:18px;font-weight:800}
+.acc-x{width:36px;height:36px;border:0;border-radius:50%;background:#EAF6FF;color:#1B2A5E;font-size:18px;cursor:pointer}
+.acc-g{margin-top:10px}
+.acc-l{display:block;margin-bottom:5px;font-weight:800;font-size:14px}
+.acc-r{display:flex;gap:6px;flex-wrap:wrap}
+.acc-c{flex:1;min-height:42px;padding:6px 10px;border:0;border-radius:12px;background:#F1F5FA;color:#1B2A5E;box-shadow:inset 0 0 0 2px #C9D6E6;font:800 15px/1.1 'Nunito',system-ui,sans-serif;cursor:pointer}
+.acc-c[aria-checked="true"]{background:#2490D6;color:#fff;box-shadow:inset 0 0 0 2px #1B6FB0}
+.acc-n{margin:12px 0 0;font-size:12.5px;font-weight:600;color:#55628A}
+.vis{display:flex;justify-content:center;margin:6px 0 70px}
+.vis-img{height:22px;width:auto}
+/* toque */
+.tapr{position:fixed;z-index:950;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;pointer-events:none;border:3px solid rgba(255,200,61,.95);animation:tapr .6s ease-out forwards}
+@keyframes tapr{to{transform:scale(4.2);opacity:0}}
+/* acabamento: todos os botões “afundam” ao tocar */
+button:not(.acc-c):not(.acc-x):active{transform:translateY(2px) scale(.97)}
+@media (hover:hover){.pic:hover,.pcard:hover,.meio:hover,.plaq:hover,.tile:hover{filter:brightness(1.04) saturate(1.08)}}
+/* menos movimento */
+html.calmo *,html.calmo *::before,html.calmo *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+/* alto contraste: mantém as cores do desenho, reforça textos e contornos */
+html.hc{--ink:#000;--muted:#111;--line:#000}
+html.hc body{color:#000}
+html.hc :is(h1,h2,h3,p,label,.w,#ptext,.ptext,.bubble,.prompt,.tag,.act-b p){color:#000!important;text-shadow:none!important}
+html.hc :is(button,.pcard,.pic,.meio,.plaq,a.act,.bubble,.card,.panel){outline:3px solid #000;outline-offset:1px}
+html.hc :is(.btn.go,.btn.primary,.acc-c[aria-checked="true"]){outline-color:#000;box-shadow:0 0 0 2px #fff inset}
+html.hc .acc-p{box-shadow:0 0 0 3px #000,0 14px 30px rgba(0,0,0,.3);color:#000}
+html.hc a:not(.act):not(.btn){color:#00449E!important;text-decoration:underline!important}
+html.hc .acc-b{background:#000;box-shadow:0 0 0 4px #FFD23F}
+html.hc .acc-c{color:#000;box-shadow:inset 0 0 0 2px #000}
+html.hc .acc-c[aria-checked="true"]{background:#000;color:#fff}
+html.hc :is(.ok,.done){outline:4px solid #00632A!important}
+html.hc :focus-visible{outline:4px solid #FFB000!important;outline-offset:2px}
+@media print{.acc-b,.acc-p,.vis{display:none}}
 </style>
 </head>
 <body>
@@ -1508,7 +1554,7 @@ button.pcard:active,.capa:active,.dia:active,.numb:active,.mom:active,.lapis:act
   <div class="wrap top-in">
     <button class="brand" id="goHome" type="button" aria-label="Voltar para a trilha"><img class="blogo" id="brandLogo" alt="Coleção Mundo Encantado"><span class="bname"><span>Brincando com as <span id="wordmark"></span></span><small>Cantigas de Roda</small></span></button>
     <div class="top-act">
-      <a class="chip" id="btnHub" href="index.html" title="Voltar para a página principal">← Atividades</a>
+      <a class="chip" id="btnHub" href="index.html" title="Voltar para a página principal">← Atividades</a><button class="chip" id="btnTrilha" type="button" hidden>← Trilha</button>
       <span class="starpill" id="starPill" title="Estrelas conquistadas"><span data-e="⭐"></span><b id="starN">0</b></span>
       <button class="chip" id="btnNome" type="button" title="Trocar o nome"><span class="adult">Nome:</span> <span class="nm" id="chipNome">—</span></button>
       <button class="iconbtn" id="btnSom" type="button" aria-pressed="true" aria-label="Ligar ou desligar o som"><span id="somIc"></span></button>
@@ -1541,7 +1587,7 @@ button.pcard:active,.capa:active,.dia:active,.numb:active,.mom:active,.lapis:act
 
   <section id="v-game" hidden>
     <div class="gbar kid">
-      <button class="round" id="back" type="button" aria-label="Voltar para a trilha"><span data-e="🏠"></span></button>
+      <button class="btn soft backt" id="back" type="button" aria-label="Voltar para a trilha"><span data-e="🏠"></span> Trilha</button>
       <h2 id="gtitle"></h2>
       <div class="prog" id="prog" aria-hidden="true"></div>
       <button class="round" id="ouvir" type="button" aria-label="Ouvir de novo"><span data-e="🔊"></span></button>
@@ -1554,7 +1600,7 @@ button.pcard:active,.capa:active,.dia:active,.numb:active,.mom:active,.lapis:act
       </div>
     </div>
     <div class="stagewrap"><div class="bd" id="bd" aria-hidden="true"></div><div class="stage kid" id="stage"></div></div>
-    <div class="gfoot kid"><button class="btn go" id="next" type="button" hidden>Continuar <span aria-hidden="true">➜</span></button></div>
+    <div class="gfoot kid"><button class="btn soft back2" id="back2" type="button"><span aria-hidden="true">←</span> Voltar para a trilha</button><button class="btn go" id="next" type="button" hidden>Continuar <span aria-hidden="true">➜</span></button></div>
     <details class="tip"><summary>Dica para o adulto</summary><p id="tipText"></p><p id="tipCodes"></p></details>
   </section>
 
@@ -2238,7 +2284,7 @@ function finish(){const g=cur.g,novo=!S.stars[g.id];S.stars[g.id]=true;saveProg(
 let justWon=null;
 function leave(){TOK++;cur=null;hush();$$('.amodal,.praise').forEach(n=>n.remove());show('home');renderHome()}
 $('#next').onclick=()=>{sfx.tap();cur.i++;if(cur.i>=cur.g.rounds)return finish();startRound()};
-$('#back').onclick=leave;
+$('#back').onclick=leave;$('#back2').onclick=leave;$('#btnTrilha').onclick=()=>{if(view==='game')leave();else{show('home');renderHome()}};
 $('#ouvir').onclick=()=>{if(cur&&cur.last)speak(fmt(cur.last,true))};
 
 function gridFind(box,T,k,total,hard,done){
@@ -2418,7 +2464,7 @@ const GAMES=[
     b.onclick=()=>{speak(low(w)+'.');$$('.w',row).forEach(x=>x.classList.remove('hid'));if(k===T){b.classList.add('ok');api.win(`Isso! ${Cap(low(wt))} é uma palavra mais comprida. Veja as letras: ela é maior também escrita.`,b)}else api.miss(b,`Fale devagar: ${low(w1)}, ${low(w2)}. Qual demora mais para falar?`)};row.append(b)});
   stage.append(row)}},
 
-{id:'portas',e:4,bg:'fora',t:'Portas das letras',ic:'pipa',fig:'dado',rounds:4,b:['EI03EF09','EI03EF03'],
+{id:'portas',e:4,bg:'fora',t:'Portas das letras',ic:'🪁',fig:'dado',rounds:4,b:['EI03EF09','EI03EF03'],
  tip:'Faça uma “caixa-surpresa” com portinhas de papel e uma letra em cada porta. Atrás da porta, uma figura que começa com aquela letra. A criança abre a porta e descobre a palavra.',
  round(i){const [L,T]=PORTAS[i],[w,e]=PR[T];
   api.prompt(`${i===0?'O Tico guardou brinquedos atrás das portas. ':''}Abra a porta da letra {${L}} para achar ${PR[T][2]==='a'?'a':'o'} ${low(w)}.`);
@@ -2558,7 +2604,10 @@ function renderMap(){const map=$('#map'),W=map.clientWidth;if(!W)return;mapW=W;
       sfx.tap();openGame(g.id)});
     b.style.setProperty('--sc',`var(--${et[3]})`);b.setAttribute('aria-label',g.t+(done?', já brincou':locked?', ainda fechada':''));
     if(g.e!==seenE){seenE=g.e;const sg=el('div',{class:'sign kid'+(et[3]==='c2'?' y':'')+(locked&&!(isNext&&fresh)?' off':''),style:`left:${pts[k][0]}px;top:${pts[k][1]-58}px;--sc:var(--${et[3]})`},el('b',{},et[0]),et[1]);map.append(sg);const hw=sg.offsetWidth/2+8;sg.style.left=Math.min(Math.max(pts[k][0],hw),W-hw)+'px'}});
-  node(N-1,'end'+(nextK<0&&!fresh?'':' locked')+(nextK<0&&fresh?' pending':''),E(nextK<0?'🏆':'roda'),nextK<0?'Chegou!':'Roda');
+  {const EL=[E(nextK<0?'🏆':'roda'),nextK<0?'Chegou!':'Roda'];const eb=node(N-1,'end'+(nextK<0&&!fresh?'':' locked')+(nextK<0&&fresh?' pending':''),[EL[0],nextK<0?null:el('span',{class:'falta'},'faltam '+GAMES.filter(g=>!S.stars[g.id]).length)],EL[1],()=>{
+    if(nextK<0){sfx.win();confetti(80);const f=$('#fimTrilha');if(f&&!f.hidden)try{f.scrollIntoView({behavior:'smooth',block:'center'})}catch(e){}speak(`Parabéns, ${nm()}! Você chegou ao fim da trilha!`);return}
+    sfx.no();const n=stops[tk];[eb,...GAMES.map((g,j)=>S.stars[g.id]?null:stops[j+1])].forEach(x=>{if(x){x.classList.remove('wob');void x.offsetWidth;x.classList.add('wob')}});try{n&&n.scrollIntoView({behavior:'smooth',block:'center'})}catch(e){}
+    const falta=GAMES.length-GAMES.filter(g=>S.stars[g.id]).length;speak(`Aqui é a chegada da trilha! Ainda faltam ${falta>1?falta+' paradas':'uma parada'}. As paradas sem estrela estão balançando. Brinque nelas até o fim!`)});eb.setAttribute('aria-label','Chegada da trilha');const fa=eb.querySelector('.falta');if(fa)eb.insertBefore(fa,eb.querySelector('.lbl'))}
   /* insetos e pássaros */
   ['🦋','🐦','🐇','🐞','🦋','🐝'].slice(0,sm?4:6).forEach((c,ci)=>{for(let n=0;n<40;n++){const x=30+R()*(W-60),y=150+R()*(H-200);if(pts.some(p=>Math.abs(x-p[0])<92&&Math.abs(y-p[1]-20)<100))continue;
     const b=el('button',{class:'crit'+(c==='🐇'?' still':''),type:'button','aria-label':'bichinho',style:`left:${x.toFixed(0)}px;top:${y.toFixed(0)}px;animation-delay:${-ci*.9}s`},E(c));b.onclick=()=>{emoSnd(c);b.classList.add('gone');setTimeout(()=>b.classList.remove('gone'),4200)};map.append(b);break}});
@@ -2589,7 +2638,7 @@ function renderFim(){const f=$('#fimTrilha'),done=!!S.nome&&GAMES.every(g=>S.sta
     clearTimeout(tm);resetTrail();sfx.whoosh();renderHome();try{window.scrollTo({top:0,behavior:'smooth'})}catch(e){}};
   f.append(el('div',{class:'ft-t'},E('🏆'),el('b',{},'Você completou a trilha!')),el('div',{class:'ft-b'},again,el('a',{class:'btn go',href:'index.html'},'Outras atividades ',el('span',{'aria-hidden':'true'},'➜'))))}
 let rsT=0;try{new ResizeObserver(()=>{clearTimeout(rsT);rsT=setTimeout(()=>{if(view==='home'&&$('#map').clientWidth!==mapW)renderMap()},150)}).observe($('#map'))}catch(e){}
-function show(v){view=v;['home','game','prof'].forEach(k=>$('#v-'+k).hidden=k!==v);try{window.scrollTo(0,0)}catch(e){}}
+function show(v){view=v;try{$('#btnTrilha').hidden=v==='home'}catch(e){}['home','game','prof'].forEach(k=>$('#v-'+k).hidden=k!==v);try{window.scrollTo(0,0)}catch(e){}}
 $('#goHome').onclick=()=>{if(view==='game')leave();else{show('home');renderHome()}};
 $('#heroOuvir').onclick=()=>speak(`Olá${S.nome?', '+nm():''}! Eu sou o Tico, o tambor. Vamos para a roda na praça? Toque na brincadeira que está piscando!`);
 const FALAS=['Tum, tum, tum!','Ai, que cócegas!','Vamos cantar?','Eu sigo o seu dedo com os olhos. Quer ver?','Gira pra lá, gira pra cá!','Você é demais!','Toque nas árvores. Elas escondem letras!'];
@@ -2798,6 +2847,101 @@ $('#btnProf').onclick=$('#footProf').onclick=openProf;
 $('#footLogo').src=$('#brandLogo').src=$('#wLogo').src=LOGO;
 $('#footCred').onclick=()=>{tab='cred';openProf()};
 $('#profBack').onclick=()=>{show('home');renderHome()};
+
+
+/* ---------- extras: acessibilidade, sons melhorados, contador e acabamento (comum a todas as páginas) ---------- */
+(function(){
+const ST={get(k,d){try{const v=localStorage.getItem('bcl:'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem('bcl:'+k,JSON.stringify(v))}catch(e){}}};
+const H=document.documentElement;
+/* ===== acessibilidade ===== */
+const ZOOM=[1,1.15,1.3];
+function applyAcc(){const a=ST.get('acc',{});const Z=Math.min(innerWidth,innerHeight*1.6)<640?[1,1.07,1.13]:ZOOM;H.classList.toggle('hc',!!a.hc);H.style.setProperty('--az',Z[a.z||0]);H.classList.toggle('az',!!a.z);H.classList.toggle('calmo',!!a.calmo)}
+applyAcc();addEventListener('resize',applyAcc);
+const VEL=[['Devagar',.75],['Normal',.95],['Rápida',1.1]];
+function setVel(v){ST.set('vel',v);try{if(typeof S==='object'&&S)S.vel=v}catch(e){}}
+function mk(tag,attrs,...kids){const n=document.createElement(tag);for(const k in attrs||{}){const v=attrs[k];if(v==null||v===false)continue;if(k==='html')n.innerHTML=v;else if(k.startsWith('on'))n[k]=v;else n.setAttribute(k,v===true?'':v)}kids.flat().forEach(c=>c!=null&&n.append(c.nodeType?c:document.createTextNode(c)));return n}
+function testVoice(){try{if(!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance('Olá! Assim fica a velocidade da voz.');u.lang='pt-BR';u.rate=ST.get('vel',.95);try{if(typeof TTS==='object'&&TTS.voice)u.voice=TTS.voice}catch(e){}speechSynthesis.speak(u)}catch(e){}}
+function chips(label,opts,cur,on){const g=mk('div',{class:'acc-g',role:'radiogroup','aria-label':label},mk('span',{class:'acc-l'},label));
+  const row=mk('div',{class:'acc-r'});opts.forEach(([t,v],i)=>{const b=mk('button',{type:'button',class:'acc-c',role:'radio','aria-checked':String(cur(v,i))},t);b.onclick=()=>{on(v,i);$$r(row).forEach((x,j)=>x.setAttribute('aria-checked',String(j===i)))};row.append(b)});g.append(row);return g}
+const $$r=r=>[...r.querySelectorAll('.acc-c')];
+function openAcc(){let p=document.getElementById('accPanel');if(p){p.remove();btn.setAttribute('aria-expanded','false');return}
+  const a=ST.get('acc',{});
+  p=mk('div',{id:'accPanel',class:'acc-p',role:'dialog','aria-label':'Acessibilidade'},
+    mk('div',{class:'acc-h'},mk('b',{},'Acessibilidade'),mk('button',{type:'button',class:'acc-x','aria-label':'Fechar',onclick:openAcc},'✕')),
+    chips('Velocidade da voz',VEL.map(([t,v])=>[t,v]),(v)=>Math.abs(ST.get('vel',.95)-v)<.06,(v)=>{setVel(v);testVoice()}),
+    chips('Tamanho das letras',[['Normal',0],['Grande',1],['Maior',2]],(v)=>(a.z||0)===v,(v)=>{const x=ST.get('acc',{});x.z=v;ST.set('acc',x);applyAcc()}),
+    chips('Alto contraste',[['Não',0],['Sim',1]],(v)=>(a.hc?1:0)===v,(v)=>{const x=ST.get('acc',{});x.hc=!!v;ST.set('acc',x);applyAcc()}),
+    chips('Menos movimento',[['Não',0],['Sim',1]],(v)=>(a.calmo?1:0)===v,(v)=>{const x=ST.get('acc',{});x.calmo=!!v;ST.set('acc',x);applyAcc()}),
+    mk('p',{class:'acc-n'},'As escolhas ficam guardadas neste aparelho e valem para todas as atividades.'));
+  document.body.append(p);btn.setAttribute('aria-expanded','true');p.querySelector('.acc-c').focus()}
+const btn=mk('button',{type:'button',id:'accBtn',class:'acc-b','aria-label':'Acessibilidade: voz, tamanho das letras e contraste','aria-expanded':'false',onclick:openAcc,html:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4" r="2.2"/><path d="M4 7.5q8 2 16 0l.6 1.9q-3.6 1.2-6.3 1.5v3.3l2.6 7.3-1.9.7-3-6.7-3 6.7-1.9-.7 2.6-7.3v-3.3Q6.9 10.6 3.4 9.4z"/></svg>'});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('accPanel'))openAcc()});
+document.addEventListener('pointerdown',e=>{const p=document.getElementById('accPanel');if(p&&!p.contains(e.target)&&e.target!==btn&&!btn.contains(e.target))openAcc()},true);
+function mount(){if(!document.getElementById('accBtn'))document.body.append(btn);counter()}
+/* ===== contador de acessos (hits.sh: sem cookies e sem dados pessoais) ===== */
+function counter(){try{if(location.hostname!=='editoraanap-tupa.github.io'||document.getElementById('visitas'))return;
+  let f=(location.pathname.split('/').pop()||'index.html').replace(/\.html$/,'')||'index';const portal=f==='index';
+  const url=`https://hits.sh/editoraanap-tupa.github.io/letras/${portal?'portal':f}.svg?label=${encodeURIComponent(portal?'visitas ao portal':'visitas')}&color=8752c8&labelColor=2490d6&style=flat-square`;
+  const img=mk('img',{src:url,alt:'Contador de visitas',class:'vis-img',loading:'eager',referrerpolicy:'no-referrer'});
+  const box=mk('p',{id:'visitas',class:'vis'},img);const feet=document.querySelectorAll('.foot');const tgt=feet[feet.length-1];
+  if(tgt)tgt.after(box);else document.body.append(box)}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
+
+/* ===== toque: pequena onda colorida onde a criança toca ===== */
+document.addEventListener('pointerdown',e=>{try{if(H.classList.contains('calmo')||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const t=e.target.closest&&e.target.closest('button,.tile,.pic,a');if(!t||t.id==='accBtn'||t.closest('#accPanel'))return;
+  const r=mk('span',{class:'tapr'});r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';document.body.append(r);setTimeout(()=>r.remove(),650)}catch(x){}},{passive:true});
+
+/* ===== sons melhorados (sintetizados) ===== */
+if(typeof sfx!=='object'||typeof actx!=='function')return;
+let MB=null;
+function bus(a){if(MB&&MB.ctx===a)return MB.in;const c=a.createDynamicsCompressor();c.threshold.value=-14;c.knee.value=10;c.ratio.value=4;c.attack.value=.004;c.release.value=.2;const g=a.createGain();g.gain.value=.9;g.connect(c).connect(a.destination);MB={ctx:a,in:g};return g}
+function env(a,g,t,peak,att,dur,rel=.06){g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(peak,t+att);g.gain.setValueAtTime(peak,t+Math.max(att,dur-rel));g.gain.exponentialRampToValueAtTime(.0001,t+dur)}
+/* voz animal: fonte (dente de serra ou quadrada) com vibrato, passando por formantes */
+function voz(o){const a=actx();if(!a)return;try{const{f=[200,200],d=.5,w=0,vol=.22,type='sawtooth',form=[[700,8],[1200,10]],vib=0,vr=6,att=.03,breath=0,fsweep=null}=o;const t=a.currentTime+w,out=bus(a);
+  const osc=a.createOscillator();osc.type=type;osc.frequency.setValueAtTime(f[0],t);for(let i=1;i<f.length;i++)osc.frequency.exponentialRampToValueAtTime(Math.max(20,f[i]),t+d*i/(f.length-1));
+  if(vib){const l=a.createOscillator(),lg=a.createGain();l.frequency.value=vr;lg.gain.value=vib;l.connect(lg).connect(osc.frequency);l.start(t);l.stop(t+d+.05)}
+  const g=a.createGain();env(a,g,t,vol,att,d);const mix=a.createGain();mix.gain.value=1;
+  form.forEach(([fq,q],i)=>{const bp=a.createBiquadFilter();bp.type='bandpass';bp.Q.value=q;bp.frequency.setValueAtTime(fq,t);if(fsweep&&fsweep[i])bp.frequency.exponentialRampToValueAtTime(fsweep[i],t+d);const gg=a.createGain();gg.gain.value=i?0.7:1.2;osc.connect(bp).connect(gg).connect(mix)});
+  mix.connect(g).connect(out);osc.start(t);osc.stop(t+d+.05);
+  if(breath)noise(d,{f:form[0][0],q:2,vol:breath,when:w})}catch(e){}}
+function tom(f,d,vol,w,type='sine'){const a=actx();if(!a)return;try{const t=a.currentTime+w,o=a.createOscillator(),g=a.createGain();o.type=type;o.frequency.value=f;env(a,g,t,vol,.005,d,d*.9);o.connect(g).connect(bus(a));o.start(t);o.stop(t+d+.05)}catch(e){}}
+function ruido(d,o={}){const a=actx();if(!a)return;try{const{f=1200,f2=0,q=1,type='bandpass',vol=.18,when=0,att=.005}=o;if(!NB){NB=a.createBuffer(1,a.sampleRate*2,a.sampleRate);const ch=NB.getChannelData(0);for(let i=0;i<ch.length;i++)ch[i]=Math.random()*2-1}
+  const t=a.currentTime+when,sr=a.createBufferSource(),fl=a.createBiquadFilter(),g=a.createGain();sr.buffer=NB;sr.loop=true;sr.loopStart=Math.random();fl.type=type;fl.Q.value=q;fl.frequency.setValueAtTime(f,t);if(f2)fl.frequency.exponentialRampToValueAtTime(f2,t+d);
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+att);g.gain.exponentialRampToValueAtTime(.0001,t+d);sr.connect(fl).connect(g).connect(bus(a));sr.start(t,Math.random());sr.stop(t+d+.05)}catch(e){}}
+/* sino: parciais inarmônicos */
+function bell(f,w=0,vol=.12,d=1.6){[[1,1],[2.76,.5],[5.4,.28],[8.93,.14],[.5,.3]].forEach(([m,v])=>tom(f*m,d*(m<1?1.2:1/Math.sqrt(m)),vol*v,w))}
+/* tambor de membrana */
+function membrana(f,w=0,vol=.35){const a=actx();if(!a)return;try{const t=a.currentTime+w,o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(f*1.8,t);o.frequency.exponentialRampToValueAtTime(f,t+.06);env(a,g,t,vol,.003,.45,.4);o.connect(g).connect(bus(a));o.start(t);o.stop(t+.5)}catch(e){}ruido(.08,{f:1800,q:.7,vol:vol*.35,when:w})}
+function flautaN(f,w,d){voz({f:[f*.995,f],d,w,type:'sine',vol:.16,form:[[f,1.2],[f*2,2]],vib:f*.012,vr:5.5,att:.06,breath:.025})}
+Object.assign(sfx,{
+ /* bichos */
+ moo:()=>voz({f:[105,118,96],d:1.25,vol:.26,form:[[380,6],[820,7],[2300,10]],fsweep:[330,700,2000],vib:2.5,vr:5,att:.12}),
+ meow:()=>voz({f:[480,820,560],d:.75,vol:.18,form:[[900,5],[2200,8]],fsweep:[1400,1200],vib:12,vr:7,att:.04}),
+ bark:()=>[0,.32].forEach(w=>{voz({f:[340,420,250],d:.16,w,vol:.26,form:[[600,4],[1500,6]],att:.008});ruido(.12,{f:1100,q:1.2,vol:.1,when:w})}),
+ howl:()=>voz({f:[300,560,620,420],d:1.6,vol:.18,form:[[500,6],[900,8]],fsweep:[700,800],vib:9,vr:5.5,att:.15}),
+ roar:()=>{voz({f:[120,150,85],d:1,vol:.22,form:[[350,3],[900,4]],vib:8,vr:28,att:.05});ruido(1,{f:500,type:'lowpass',vol:.12,att:.05})},
+ croak:()=>[0,.42].forEach(w=>{for(let i=0;i<4;i++)voz({f:[150,120],d:.05,w:w+i*.045,type:'square',vol:.14,form:[[450,4],[1100,6]],att:.004})}),
+ quack:()=>[0,.26].forEach(w=>voz({f:[480,520,400],d:.2,w,type:'square',vol:.13,form:[[1100,5],[2400,8]],att:.01})),
+ cluck:()=>[0,.17,.33,.62].forEach((w,i)=>voz({f:i===3?[700,520]:[520,440],d:i===3?.28:.09,w,type:'square',vol:.12,form:[[1200,5],[2600,8]],att:.006})),
+ chirp:()=>{for(let i=0;i<5;i++){const w=i*.11;glide(2600+i*90,3900,.06,.06,'sine',w);glide(3600,2700,.05,.04,'sine',w+.06)}},
+ buzz:()=>voz({f:[230,250,225],d:.9,vol:.09,form:[[400,3],[1100,4]],vib:14,vr:32,att:.05}),
+ cricket:()=>[0,.36,.72].forEach(w=>{for(let i=0;i<5;i++)tom(4300,.022,.06,w+i*.036,'sine')}),
+ /* instrumentos */
+ drum:()=>{membrana(85,0,.38);membrana(85,.28,.3)},
+ chocalho:()=>[0,.1,.2,.34,.44].forEach((w,i)=>ruido(.07,{f:7000,type:'highpass',vol:i%2?.08:.12,when:w,att:.003})),
+ pandeiro:()=>{membrana(170,0,.25);for(let i=0;i<6;i++)ruido(.09,{f:8500,q:3,vol:.06,when:.02+i*.05});membrana(170,.34,.2);for(let i=0;i<4;i++)ruido(.08,{f:8500,q:3,vol:.05,when:.36+i*.05})},
+ sino:()=>{bell(880,0,.13,1.8);bell(880,.55,.08,1.4)},
+ flauta:()=>[[523,0,.22],[659,.24,.22],[784,.48,.22],[1047,.72,.5]].forEach(([f,w,d])=>flautaN(f,w,d)),
+ apito:()=>{const a=actx();if(!a)return;try{const t=a.currentTime,o=a.createOscillator(),l=a.createOscillator(),lg=a.createGain(),g=a.createGain();o.type='sine';o.frequency.value=2700;l.frequency.value=28;lg.gain.value=180;l.connect(lg).connect(o.frequency);env(a,g,t,.1,.02,.55);o.connect(g).connect(bus(a));o.start(t);l.start(t);o.stop(t+.6);l.stop(t+.6)}catch(e){}ruido(.5,{f:2700,q:4,vol:.03})},
+ cavalo:()=>[0,.13,.34,.47].forEach(w=>{tom(380,.05,.16,w,'triangle');ruido(.04,{f:1200,q:2,vol:.08,when:w})}),
+ chime:()=>[1319,1568,2093,2637].forEach((f,i)=>bell(f,i*.09,.05,.9)),
+ clap:()=>[0,.14].forEach(w=>{ruido(.09,{f:1400,q:.8,vol:.25,when:w,att:.002});ruido(.05,{f:2600,q:1.5,vol:.12,when:w+.008,att:.002})}),
+ splash:()=>{ruido(.5,{f:3000,f2:400,type:'lowpass',vol:.2,att:.005});for(let i=0;i<5;i++)tom(900+Math.random()*900,.05,.04,.08+i*.05)},
+ bubble:()=>[0,.13,.24,.38,.5].forEach((w,i)=>glide(280+i*40,780+i*60,.08,.09,'sine',w)),
+ rain:()=>{ruido(1.8,{f:4000,type:'highpass',vol:.05,att:.2});for(let i=0;i<14;i++)tom(1800+Math.random()*2200,.03,.025,Math.random()*1.6)},
+ boing:()=>glide(140,520,.32,.16,'sine',0,220)
+});
+})();
 
 /* ---------- partida ---------- */
 renderHome();
