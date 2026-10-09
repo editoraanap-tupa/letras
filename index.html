@@ -184,10 +184,15 @@ a.act:hover .rab{animation-duration:.6s}
 .bar i{display:block;height:100%;border-radius:999px;background:repeating-linear-gradient(90deg,var(--c2) 0 14px,#FFD25A 14px 20px)}
 .act .btn{margin-top:auto;align-self:flex-start}
 .act-n{position:absolute;z-index:3;left:14px;top:14px;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ac);color:#fff;font-family:var(--brand);font-weight:800;font-size:22px;box-shadow:0 0 0 4px #fff,0 4px 0 color-mix(in srgb,var(--ac) 55%,#000)}
-.act-b h3{order:0}.act-b>p{order:1}.act-b .tags{order:2}.act-b .prog{order:3}.act-b .btn{order:4}
+.act-b h3{order:0}.act-b>p{order:1}.act-b .tags{order:2}
+.act-f{display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap;padding:0 18px 18px}
+.act-f .prog{flex:1 1 200px;margin:0}
+.act-f .prog.novo{color:var(--muted)}
+.act-f .btn{margin:0;flex:none}
 @media (min-width:860px){
  .acts{grid-template-columns:1fr 1fr;gap:26px 22px}
- .act{display:grid;grid-template-columns:minmax(0,57%) minmax(0,1fr);align-items:stretch}
+ .act{display:grid;grid-template-columns:minmax(0,57%) minmax(0,1fr);grid-template-rows:auto auto;align-items:stretch}
+ .act-f{grid-column:1/-1;margin:2px 12px 12px;padding:12px 14px;border-radius:18px;background:color-mix(in srgb,var(--ac) 9%,var(--surface));box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--ac) 28%,var(--surface))}
  .act .th-w{align-self:center;padding:12px 0 12px 12px}
  .act .thumb{margin:0;border-radius:20px;box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 40%,#fff)}
  .act .th-b{right:8px;bottom:20px;font-size:13.5px;padding:2px 10px 2px 7px}
@@ -197,7 +202,7 @@ a.act:hover .rab{animation-duration:.6s}
  .act-b>p{order:1;font-size:14.5px;line-height:1.4}
  .act-b .tags{order:2;gap:4px}
  .act-b .prog{order:3}
- .act-b .btn{order:4;margin-top:4px;min-height:44px;font-size:15.5px;padding:6px 16px;white-space:nowrap}
+ .act-f .btn{min-height:46px;font-size:16px;padding:6px 20px;white-space:nowrap}
  .act .tag{font-size:11.5px;padding:1px 8px;border-width:1.5px}
 }
 
@@ -845,8 +850,8 @@ const acts=$('#acts');
 ATIVIDADES.forEach((a,ai)=>{const all=store.get(a.chave,{})||{},p=nome&&all[nome]?Object.keys(all[nome].s||{}).length:0;
   acts.append(el('a',{class:'act',href:a.href,style:`--ac:var(--${a.cor})`,'aria-label':`Atividade ${ai+1}: ${a.t}`},(()=>{const tw=a.thumb();tw.append(el('span',{class:'act-n','aria-hidden':'true'},String(ai+1)));return tw})(),el('div',{class:'act-b'},
     el('div',{class:'tags'},a.tags.map(x=>el('span',{class:'tag'},x)),a.mascote?el('span',{class:'tag'},`Com ${a.art} ${a.mascote}`):null),
-    el('h3',{},a.t),el('p',{},a.d),
-    p?el('div',{class:'prog'+(p>=a.paradas?' fim':'')},p>=a.paradas?`⭐ ${tc(nome)} completou a trilha!`:`${tc(nome)} já acendeu ${p} de ${a.paradas} paradas`,el('div',{class:'bar'},el('i',{style:`width:${Math.min(100,p/a.paradas*100)}%`}))):null,
+    el('h3',{},a.t),el('p',{},a.d)),
+    el('div',{class:'act-f'},p?el('div',{class:'prog'+(p>=a.paradas?' fim':'')},p>=a.paradas?`⭐ ${tc(nome)} completou a trilha!`:`${tc(nome)} já acendeu ${p} de ${a.paradas} paradas`,el('div',{class:'bar'},el('i',{style:`width:${Math.min(100,p/a.paradas*100)}%`}))):el('div',{class:'prog novo'},`${a.paradas} paradas para acender`,el('div',{class:'bar'},el('i',{style:'width:0'}))),
     el('span',{class:'btn go'},p>=a.paradas?'Brincar de novo ':p?'Continuar ':'Brincar ',el('span',{'aria-hidden':'true'},'➜')))))});
 for(let k=0;k<EM_BREVE;k++)acts.append(el('div',{class:'act soon'},el('div',{class:'thumb'},E('🎁')),el('div',{class:'act-b'},el('h3',{},'Em breve'),el('p',{},'Uma nova atividade vai aparecer aqui.'))));
 $('#actN').textContent=`${ATIVIDADES.length} atividades · ${ATIVIDADES.reduce((n,a)=>n+a.paradas,0)} brincadeiras · 4 e 5 anos`;
