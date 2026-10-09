@@ -215,8 +215,26 @@ a.act:hover .rab{animation-duration:.6s}
 .ab-c h3{font-size:19px;font-weight:800}
 .ab-c p{font-size:15px;color:var(--muted);font-weight:600;line-height:1.42}
 @media(max-width:600px){.ab-h{flex-direction:column;align-items:flex-start;gap:8px;padding:16px 18px}.ab-g{padding:14px}}
-.foot{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:22px;color:var(--muted);font-size:15px}
-.foot img{width:84px;height:84px;border-radius:16px;background:#fff;flex:none}
+.foot{margin-top:40px;color:var(--muted);font-size:15px}
+.sfoot{position:relative;background:var(--surface);border-radius:30px;overflow:hidden;box-shadow:inset 0 0 0 3px var(--line),0 6px 0 var(--line)}
+.sfoot::before{content:"";display:block;height:8px;background:linear-gradient(90deg,var(--c1) 0 16.6%,var(--c2) 0 33.3%,var(--c3) 0 50%,var(--c4) 0 66.6%,var(--c5) 0 83.3%,var(--c6) 0)}
+.sf-main{display:grid;grid-template-columns:auto 1fr auto;gap:18px 24px;align-items:center;padding:22px 26px}
+.sfoot .sf-logo{width:104px;height:104px;border-radius:22px;background:#fff;box-shadow:0 0 0 3px var(--line);flex:none}
+.sf-txt p{margin:0}
+.sf-t{font-family:var(--brand);font-weight:800;font-size:24px;color:var(--ink);line-height:1.15}
+.sf-s{font-weight:700;color:var(--c4);margin-bottom:6px!important}
+.sf-c{font-size:15px;line-height:1.55}
+.sfoot b{font-weight:400;color:var(--ink)}
+.sfoot a.sel{font-weight:400;color:var(--ink);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--c4) 50%,transparent);text-underline-offset:3px;overflow-wrap:anywhere}
+.sf-links{display:grid;gap:8px;min-width:190px}
+.sf-links>*{display:block;text-align:left;padding:8px 14px;border-radius:14px;background:var(--bg2);color:var(--ink);font:700 15px/1.2 var(--body);text-decoration:none;cursor:pointer}
+.sf-links>*:hover{background:color-mix(in srgb,var(--c4) 16%,var(--bg2))}
+.sf-links>*::before{content:"›";margin-right:8px;color:var(--c1);font-weight:800}
+.sf-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:12px 84px 12px 26px;background:var(--bg2);font-size:13.5px;font-weight:700}
+#visSlot:empty{display:none}
+#visSlot .vis{margin:0}
+@media (max-width:760px){.sf-main{grid-template-columns:1fr;justify-items:center;text-align:center;padding:22px 18px}.sf-links{width:100%;grid-template-columns:1fr 1fr;min-width:0}.sf-links>*{text-align:center}.sf-links>*::before{display:none}.sf-bar{justify-content:center;text-align:center;padding-bottom:84px}}
+
 .foot .sel{user-select:all;color:var(--ink);overflow-wrap:anywhere}
 .foot b{font-weight:400;color:var(--ink)}
 
@@ -416,7 +434,24 @@ html.hc :focus-visible{outline:4px solid #FFB000!important;outline-offset:2px}
   <div class="acts" id="acts"></div>
 
 
-  <p class="foot"><img id="footLogo" alt="Coleção Mundo Encantado"> <span>Coleção Mundo Encantado · Elaboração: <b>Profa. Dra. Sandra Medina Benini</b><br>Contato: <span class="sel">mundo.encantado.prof@gmail.com</span></span></p>
+  <footer class="foot sfoot">
+    <div class="sf-main">
+      <img id="footLogo" class="sf-logo" alt="Coleção Mundo Encantado">
+      <div class="sf-txt">
+        <p class="sf-t">Brincando com as Letras</p>
+        <p class="sf-s">Coleção Mundo Encantado · Educação Infantil · 4 e 5 anos</p>
+        <p class="sf-c">Elaboração: <b>Profa. Dra. Sandra Medina Benini</b></p>
+        <p class="sf-c">Contato: <a class="sel" href="mailto:mundo.encantado.prof@gmail.com">mundo.encantado.prof@gmail.com</a></p>
+      </div>
+      <nav class="sf-links" aria-label="Atalhos">
+        <a href="#atividades">Atividades</a>
+        <button type="button" data-dlg="dFam">Para as famílias</button>
+        <button type="button" data-dlg="dProf">Para professores</button>
+        <button type="button" id="sfAcc">Acessibilidade</button>
+      </nav>
+    </div>
+    <div class="sf-bar"><span>10 atividades · 156 brincadeiras · alinhadas à BNCC</span><span id="visSlot"></span><span>© 2026 Coleção Mundo Encantado</span></div>
+  </footer>
 </main>
 
 <script>
@@ -813,6 +848,7 @@ $('#actN').textContent=`${ATIVIDADES.length} atividades · ${ATIVIDADES.reduce((
 (()=>{const tx=$('#tNomeTx');if(nome)tx.textContent='Nome: '+nome;
 document.querySelectorAll('.tchip .tci').forEach(n=>{const e=n.textContent.trim();n.replaceChildren(E(e))});
 document.querySelectorAll('.hd-ben li>span').forEach(n=>{const e=n.textContent.trim();n.replaceChildren(E(e))});
+$('#sfAcc').onclick=()=>{const b=document.getElementById('accBtn');if(b)b.click()};
 document.querySelectorAll('[data-dlg]').forEach(b=>b.onclick=()=>{const d=document.getElementById(b.dataset.dlg);if(b.dataset.dlg==='dNome'){$('#hNomeIn').value=nome;$('#hNomeErr').textContent=''}
   try{d.showModal()}catch(e){d.setAttribute('open','')}
   if(b.dataset.dlg==='dNome'){speak('Qual é o seu nome? Peça ajuda a um adulto para escrever.');setTimeout(()=>{try{$('#hNomeIn').focus()}catch(e){}},60)}});
@@ -859,7 +895,7 @@ function counter(){try{if(location.hostname!=='editoraanap-tupa.github.io'||docu
   let f=(location.pathname.split('/').pop()||'index.html').replace(/\.html$/,'')||'index';const portal=f==='index';
   const url=`https://hits.sh/editoraanap-tupa.github.io/letras/${portal?'portal':f}.svg?label=${encodeURIComponent(portal?'visitas ao portal':'visitas')}&color=8752c8&labelColor=2490d6&style=flat-square`;
   const img=mk('img',{src:url,alt:'Contador de visitas',class:'vis-img',loading:'eager',referrerpolicy:'no-referrer'});
-  const box=mk('p',{id:'visitas',class:'vis'},img);const feet=document.querySelectorAll('.foot');const tgt=feet[feet.length-1];
+  const box=mk('p',{id:'visitas',class:'vis'},img);const slot=document.getElementById('visSlot');if(slot){slot.append(box);return}const feet=document.querySelectorAll('.foot');const tgt=feet[feet.length-1];
   if(tgt)tgt.after(box);else document.body.append(box)}catch(e){}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 
