@@ -2629,18 +2629,22 @@ function openAcc(){let p=document.getElementById('accPanel');if(p){p.remove();bt
     chips('Tamanho das letras',[['Normal',0],['Grande',1],['Maior',2]],(v)=>(a.z||0)===v,(v)=>{const x=ST.get('acc',{});x.z=v;ST.set('acc',x);applyAcc()}),
     chips('Alto contraste',[['Não',0],['Sim',1]],(v)=>(a.hc?1:0)===v,(v)=>{const x=ST.get('acc',{});x.hc=!!v;ST.set('acc',x);applyAcc()}),
     chips('Menos movimento',[['Não',0],['Sim',1]],(v)=>(a.calmo?1:0)===v,(v)=>{const x=ST.get('acc',{});x.calmo=!!v;ST.set('acc',x);applyAcc()}),
-    mk('p',{class:'acc-n'},'As escolhas ficam guardadas neste aparelho e valem para todas as atividades.'));
+    mk('p',{class:'acc-n'},mk('b',{},'Libras: '),'toque no botão azul com as mãos, no lado direito da tela, e depois em um texto. O VLibras traduz para Libras.'),mk('p',{class:'acc-n'},'As escolhas ficam guardadas neste aparelho e valem para todas as atividades.'));
   document.body.append(p);btn.setAttribute('aria-expanded','true');p.querySelector('.acc-c').focus()}
 const btn=mk('button',{type:'button',id:'accBtn',class:'acc-b','aria-label':'Acessibilidade: voz, tamanho das letras e contraste','aria-expanded':'false',onclick:openAcc,html:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4" r="2.2"/><path d="M4 7.5q8 2 16 0l.6 1.9q-3.6 1.2-6.3 1.5v3.3l2.6 7.3-1.9.7-3-6.7-3 6.7-1.9-.7 2.6-7.3v-3.3Q6.9 10.6 3.4 9.4z"/></svg>'});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('accPanel'))openAcc()});
 document.addEventListener('pointerdown',e=>{const p=document.getElementById('accPanel');if(p&&!p.contains(e.target)&&e.target!==btn&&!btn.contains(e.target))openAcc()},true);
-function mount(){if(!document.getElementById('accBtn'))document.body.append(btn);counter()}
+/* ===== Libras (VLibras, do Governo Federal) ===== */
+function libras(){try{if(location.protocol==='file:'||window.__vl)return;window.__vl=1;
+  const sc=document.createElement('script');sc.src='https://vlibras.gov.br/app/vlibras-plugin.js';sc.async=true;
+  sc.onload=()=>{try{new window.VLibras.Widget('https://vlibras.gov.br/app')}catch(e){}};document.head.append(sc)}catch(e){}}
+function mount(){if(!document.getElementById('accBtn'))document.body.append(btn);counter();libras()}
 /* ===== contador de acessos (hits.sh: sem cookies e sem dados pessoais) ===== */
 function counter(){try{if(location.hostname!=='editoraanap-tupa.github.io'||document.getElementById('visitas'))return;
   let f=(location.pathname.split('/').pop()||'index.html').replace(/\.html$/,'')||'index';const portal=f==='index';
   const url=`https://hits.sh/editoraanap-tupa.github.io/letras/${portal?'portal':f}.svg?label=${encodeURIComponent(portal?'visitas ao portal':'visitas')}&color=8752c8&labelColor=2490d6&style=flat-square`;
   const img=mk('img',{src:url,alt:'Contador de visitas',class:'vis-img',loading:'eager',referrerpolicy:'no-referrer'});
-  const box=mk('p',{id:'visitas',class:'vis'},img);const feet=document.querySelectorAll('.foot');const tgt=feet[feet.length-1];
+  const box=mk('p',{id:'visitas',class:'vis'},img);const slot=document.getElementById('visSlot');if(slot){slot.append(box);return}const feet=document.querySelectorAll('.foot');const tgt=feet[feet.length-1];
   if(tgt)tgt.after(box);else document.body.append(box)}catch(e){}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 
