@@ -1379,24 +1379,24 @@ html.az body{zoom:var(--az,1)}
 .tapr{position:fixed;z-index:950;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;pointer-events:none;border:3px solid rgba(255,200,61,.95);animation:tapr .6s ease-out forwards}
 @keyframes tapr{to{transform:scale(4.2);opacity:0}}
 /* acabamento: todos os botões “afundam” ao tocar */
-button:not(.acc-c):not(.acc-x):active{transform:translateY(2px) scale(.97)}
+
 @media (hover:hover){.pic:hover,.pcard:hover,.meio:hover,.plaq:hover,.tile:hover{filter:brightness(1.04) saturate(1.08)}}
 /* menos movimento */
 html.calmo *,html.calmo *::before,html.calmo *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
-/* alto contraste: mantém as cores do desenho, reforça textos e contornos */
-html.hc{--ink:#000;--muted:#111;--line:#000}
-html.hc body{color:#000}
-html.hc :is(h1,h2,h3,p,label,.w,#ptext,.ptext,.bubble,.prompt,.tag,.act-b p){color:#000!important;text-shadow:none!important}
-html.hc :is(button,.pcard,.pic,.meio,.plaq,a.act,.bubble,.card,.panel){outline:3px solid #000;outline-offset:1px}
-html.hc :is(.btn.go,.btn.primary,.acc-c[aria-checked="true"]){outline-color:#000;box-shadow:0 0 0 2px #fff inset}
-html.hc .acc-p{box-shadow:0 0 0 3px #000,0 14px 30px rgba(0,0,0,.3);color:#000}
-html.hc a:not(.act):not(.btn){color:#00449E!important;text-decoration:underline!important}
-html.hc .acc-b{background:#000;box-shadow:0 0 0 4px #FFD23F}
-html.hc .acc-c{color:#000;box-shadow:inset 0 0 0 2px #000}
-html.hc .acc-c[aria-checked="true"]{background:#000;color:#fff}
-html.hc :is(.ok,.done){outline:4px solid #00632A!important}
-html.hc :focus-visible{outline:4px solid #FFB000!important;outline-offset:2px}
 @media print{.acc-b,.acc-p,.vis{display:none}}
+/* área de resposta sim/não: botões de resposta, diferentes das fichas */
+.simnao{display:flex!important;flex-wrap:wrap;gap:12px 18px;justify-content:center;align-items:center;width:fit-content;max-width:min(100%,600px);margin:14px auto 0!important;padding:12px 18px 18px;border-radius:28px;background:rgba(255,255,255,.92);box-shadow:0 0 0 4px #FFD25A,0 8px 0 rgba(0,0,0,.1)}
+.simnao::before{content:"Toque na sua resposta:";flex-basis:100%;text-align:center;font:800 17px/1.2 'Nunito',system-ui,sans-serif;color:#1B2A5E;letter-spacing:.02em}
+.simnao .sn{display:inline-flex!important;flex-direction:row!important;align-items:center;justify-content:flex-start;gap:12px;width:auto!important;min-width:min(40vw,210px);min-height:74px;height:auto!important;padding:8px 26px 8px 10px!important;border:0!important;border-radius:999px!important;background:var(--snb)!important;box-shadow:0 7px 0 var(--snd)!important;outline:0;cursor:pointer;animation:snIn .4s ease both}
+.simnao .sn:first-of-type{--snb:#3FA535;--snd:#2B7524}
+.simnao .sn:last-of-type{--snb:#EE4F7B;--snd:#B8315A;animation-delay:.08s}
+.simnao .sn>img.tw,.simnao .sn>.tw{flex:none;width:54px!important;height:54px!important;padding:7px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 3px rgba(0,0,0,.08);font-size:40px}
+.simnao .sn>span{color:#fff!important;font:800 clamp(19px,4.4vw,24px)/1.05 'Baloo 2','Nunito',system-ui,sans-serif;letter-spacing:.03em;text-shadow:0 2px 0 rgba(0,0,0,.18);white-space:nowrap}
+.simnao .sn:hover{filter:brightness(1.06)}
+.simnao .sn:active{box-shadow:0 2px 0 var(--snd)!important;translate:0 5px}
+.simnao .sn.ok{box-shadow:0 0 0 5px #FFD25A,0 7px 0 var(--snd)!important}
+@keyframes snIn{from{opacity:0;translate:0 12px}}
+@media (max-width:480px){.simnao{padding:10px 12px 16px;gap:10px}.simnao .sn{min-width:0;flex:1 1 140px;padding:6px 16px 6px 8px!important;min-height:64px}.simnao .sn>img.tw{width:44px!important;height:44px!important}}
 </style>
 </head>
 <body>
@@ -2464,6 +2464,7 @@ function renderMap(){const map=$('#map'),W=map.clientWidth;if(!W)return;mapW=W;
   node(0,'end',E('🏠'),'Casa');
   ord.forEach((g,j)=>{const k=j+1,et=ETAPAS[g.e-1],done=!!S.stars[g.id],isNext=j===nextK,locked=!done&&(!S.livre&&nextK>=0&&j>nextK||isNext&&fresh);
     const b=node(k,(done?'done ':'')+(locked?'locked ':'')+(isNext&&fresh?'pending ':'')+(isNext&&!fresh?'next':''),[E(g.ic),done?E('⭐','badge'):null,done?E(g.fig,'fig'):null,locked?E('🔒','badge lockb'):null],g.t,()=>{
+      if(b.classList.contains('locked')&&j===nextK){sfx.tap();openGame(g.id);return}
       if(b.classList.contains('locked')){sfx.no();[b,stops[tk]].forEach(n=>{if(n){n.classList.remove('wob');void n.offsetWidth;n.classList.add('wob')}});speak('Essa parada ainda está apagada. Brinque primeiro na que está piscando!');return}
       sfx.tap();openGame(g.id)});
     b.style.setProperty('--sc',`var(--${et[3]})`);b.setAttribute('aria-label',g.t+(done?', já brincou':locked?', ainda fechada':''));
@@ -2733,7 +2734,7 @@ const ST={get(k,d){try{const v=localStorage.getItem('bcl:'+k);return v==null?d:J
 const H=document.documentElement;
 /* ===== acessibilidade ===== */
 const ZOOM=[1,1.15,1.3];
-function applyAcc(){const a=ST.get('acc',{});const Z=Math.min(innerWidth,innerHeight*1.6)<640?[1,1.07,1.13]:ZOOM;H.classList.toggle('hc',!!a.hc);H.style.setProperty('--az',Z[a.z||0]);H.classList.toggle('az',!!a.z);H.classList.toggle('calmo',!!a.calmo)}
+function applyAcc(){const a=ST.get('acc',{});const Z=Math.min(innerWidth,innerHeight*1.6)<640?[1,1.07,1.13]:ZOOM;H.classList.remove('hc');H.style.setProperty('--az',Z[a.z||0]);H.classList.toggle('az',!!a.z);H.classList.toggle('calmo',!!a.calmo)}
 applyAcc();addEventListener('resize',applyAcc);
 const VEL=[['Devagar',.75],['Normal',.95],['Rápida',1.1]];
 function setVel(v){ST.set('vel',v);try{if(typeof S==='object'&&S)S.vel=v}catch(e){}}
@@ -2748,9 +2749,8 @@ function openAcc(){let p=document.getElementById('accPanel');if(p){p.remove();bt
     mk('div',{class:'acc-h'},mk('b',{},'Acessibilidade'),mk('button',{type:'button',class:'acc-x','aria-label':'Fechar',onclick:openAcc},'✕')),
     chips('Velocidade da voz',VEL.map(([t,v])=>[t,v]),(v)=>Math.abs(ST.get('vel',.95)-v)<.06,(v)=>{setVel(v);testVoice()}),
     chips('Tamanho das letras',[['Normal',0],['Grande',1],['Maior',2]],(v)=>(a.z||0)===v,(v)=>{const x=ST.get('acc',{});x.z=v;ST.set('acc',x);applyAcc()}),
-    chips('Alto contraste',[['Não',0],['Sim',1]],(v)=>(a.hc?1:0)===v,(v)=>{const x=ST.get('acc',{});x.hc=!!v;ST.set('acc',x);applyAcc()}),
     chips('Menos movimento',[['Não',0],['Sim',1]],(v)=>(a.calmo?1:0)===v,(v)=>{const x=ST.get('acc',{});x.calmo=!!v;ST.set('acc',x);applyAcc()}),
-    mk('p',{class:'acc-n'},mk('b',{},'Libras: '),'toque no botão azul com as mãos, no lado direito da tela, e depois em um texto. O VLibras traduz para Libras.'),mk('p',{class:'acc-n'},'As escolhas ficam guardadas neste aparelho e valem para todas as atividades.'));
+    mk('p',{class:'acc-n'},'As escolhas ficam guardadas neste aparelho e valem para todas as atividades.'));
   document.body.append(p);btn.setAttribute('aria-expanded','true');p.querySelector('.acc-c').focus()}
 const btn=mk('button',{type:'button',id:'accBtn',class:'acc-b','aria-label':'Acessibilidade: voz, tamanho das letras e contraste','aria-expanded':'false',onclick:openAcc,html:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4" r="2.2"/><path d="M4 7.5q8 2 16 0l.6 1.9q-3.6 1.2-6.3 1.5v3.3l2.6 7.3-1.9.7-3-6.7-3 6.7-1.9-.7 2.6-7.3v-3.3Q6.9 10.6 3.4 9.4z"/></svg>'});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('accPanel'))openAcc()});
@@ -2759,7 +2759,14 @@ document.addEventListener('pointerdown',e=>{const p=document.getElementById('acc
 function libras(){try{if(location.protocol==='file:'||window.__vl)return;window.__vl=1;
   const sc=document.createElement('script');sc.src='https://vlibras.gov.br/app/vlibras-plugin.js';sc.async=true;
   sc.onload=()=>{try{new window.VLibras.Widget('https://vlibras.gov.br/app')}catch(e){}};document.head.append(sc)}catch(e){}}
-function mount(){if(!document.getElementById('accBtn'))document.body.append(btn);counter();libras()}
+/* ===== toque garantido: se o dedo desce e sobe no mesmo botão, o clique acontece ===== */
+(function(){let d=null;const SEL='button,a[href],[role=button],.stop,.pic,.tile';
+document.addEventListener('pointerdown',e=>{if(e.button>0){d=null;return}const el=e.target.closest&&e.target.closest(SEL);d=el?{el,x:e.clientX,y:e.clientY,t:Date.now(),ok:false}:null},true);
+document.addEventListener('click',e=>{if(d&&d.el&&(d.el===e.target||d.el.contains(e.target)||e.target.contains&&e.target.contains(d.el)))d.ok=true},true);
+document.addEventListener('pointerup',e=>{const c=d;if(!c)return;const mv=Math.hypot(e.clientX-c.x,e.clientY-c.y);
+  if(mv>14||Date.now()-c.t>1200)return;setTimeout(()=>{if(c.ok||d!==c||!document.contains(c.el)||c.el.disabled||c.el.closest('.locked,[hidden]'))return;try{c.ok=true;c.el.click()}catch(x){}},450)},true);
+document.addEventListener('pointercancel',()=>{d=null},true)})();
+function mount(){if(!document.getElementById('accBtn'))document.body.append(btn)}
 /* ===== contador de acessos (hits.sh: sem cookies e sem dados pessoais) ===== */
 function counter(){try{if(location.hostname!=='editoraanap-tupa.github.io'||document.getElementById('visitas'))return;
   let f=(location.pathname.split('/').pop()||'index.html').replace(/\.html$/,'')||'index';const portal=f==='index';
