@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Administração Mundo Encantado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800;900&display=swap">
+<style>
+/* Área da administradora: vendas, pedidos e clientes do site Mundo Encantado. */
+:root{
+  --bg:#F2F7FA; --surface:#FFFFFF; --ink:#1B2A5E; --muted:#55628A; --line:#D5E3EC; --grid:#E6EEF3;
+  --azul:#2490D6; --azul-forte:#1B6FA8; --rosa:#EE4F7B; --laranja:#F7A823;
+  --ok:#2E7D32; --ok-bg:#E3F4E4; --esp:#8A5A00; --esp-bg:#FFF2CC; --cancel:#5F6B7A; --cancel-bg:#ECEFF3;
+  --display:"Baloo 2",Nunito,system-ui,sans-serif; --texto:Nunito,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1628; --surface:#1A2440; --ink:#EEF3FF; --muted:#A9B6D3; --line:#2E3B5E; --grid:#24304F;
+  --azul:#5AAEE8; --azul-forte:#8CC8F2; --ok:#7BD08A; --ok-bg:#1D3A27; --esp:#FFD36B; --esp-bg:#3B3018; --cancel:#B5BFCD; --cancel-bg:#2A3350; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1628;--surface:#1A2440;--ink:#EEF3FF;--muted:#A9B6D3;--line:#2E3B5E;--grid:#24304F;--azul:#5AAEE8;--azul-forte:#8CC8F2;--ok:#7BD08A;--ok-bg:#1D3A27;--esp:#FFD36B;--esp-bg:#3B3018;--cancel:#B5BFCD;--cancel-bg:#2A3350;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:600 16px/1.5 var(--texto)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--laranja);outline-offset:2px}
+a{color:var(--azul-forte)}
+.topo{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:1180px;margin:0 auto;padding:14px 16px}
+.marca{display:flex;align-items:center;gap:10px;font:800 21px/1.1 var(--display);color:var(--ink);text-decoration:none}
+.marca small{display:block;font:700 13px var(--texto);color:var(--muted)}
+.quem{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:14px;flex-wrap:wrap}
+.bt{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:8px 14px;font-weight:800;cursor:pointer;min-height:44px}
+.bt.prim{background:var(--azul);border-color:var(--azul);color:#fff}
+.bt.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bt.prim,:root:not([data-theme="light"]) .bt.ok{color:#0F1628}}
+main{max-width:1180px;margin:0 auto;padding:0 16px 48px}
+.aviso{background:var(--esp-bg);color:var(--esp);border-radius:14px;padding:10px 14px;font-weight:800;margin:0 0 18px}
+.entrar{max-width:440px;margin:10vh auto;background:var(--surface);border-radius:24px;padding:28px;text-align:center;display:flex;flex-direction:column;gap:14px}
+.entrar h1{font:800 28px/1.15 var(--display);margin:0}
+.entrar p{margin:0;color:var(--muted)}
+h2{font:800 22px/1.2 var(--display);margin:0 0 10px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:0 0 18px}
+@media (max-width:560px){.cards{grid-template-columns:1fr 1fr;gap:10px}.card{padding:12px}.card .num{font-size:22px}.card .det{font-size:13px}}
+.card{background:var(--surface);border-radius:18px;padding:16px}
+.card .rot{color:var(--muted);font-size:14px;font-weight:800}
+.card .num{font:800 30px/1.1 var(--display);margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.card .det{color:var(--muted);font-size:14px}
+.duas{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:0 0 18px}
+@media (max-width:860px){.duas{grid-template-columns:1fr}}
+.painel{background:var(--surface);border-radius:18px;padding:16px;min-width:0}
+.painel .sub{color:var(--muted);font-size:14px;margin:-6px 0 10px}
+.grafico{position:relative}
+.grafico svg{display:block;width:100%;height:auto;overflow:visible}
+.grafico text{fill:var(--muted);font:700 11px var(--texto)}
+.dica{position:absolute;pointer-events:none;background:var(--ink);color:var(--surface);border-radius:10px;padding:6px 10px;font-size:13px;font-weight:800;white-space:nowrap;transform:translate(-50%,-110%);opacity:0;transition:opacity .12s}
+.dica.on{opacity:1}
+.top{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.top li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:14px}
+.top .barra{grid-column:1/-1;height:10px;border-radius:5px;background:var(--grid);overflow:hidden}
+.top .barra span{display:block;height:100%;background:var(--azul);border-radius:0 5px 5px 0}
+.top b{font-variant-numeric:tabular-nums}
+.filtros{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px}
+.chip{border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-weight:800;cursor:pointer;min-height:40px}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.busca{flex:1 1 220px;min-width:0;border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:8px 12px;min-height:44px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;color:var(--muted);font-weight:800;padding:8px;border-bottom:2px solid var(--line);white-space:nowrap}
+td{padding:10px 8px;border-bottom:1px solid var(--grid);vertical-align:top}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cli b{display:block}.cli span{color:var(--muted);display:block;overflow-wrap:anywhere}
+.cod{font-family:ui-monospace,monospace;font-weight:700}
+.sit{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 10px;font-weight:900;font-size:13px;white-space:nowrap}
+.sit.pago{background:var(--ok-bg);color:var(--ok)}.sit.aguardando{background:var(--esp-bg);color:var(--esp)}.sit.cancelado{background:var(--cancel-bg);color:var(--cancel)}
+.acoes{display:flex;gap:6px;flex-wrap:wrap}
+.acoes .bt{min-height:36px;padding:4px 10px;font-size:13px}
+.vazio{text-align:center;color:var(--muted);padding:24px}
+@media (max-width:760px){
+  table,tbody,tr,td{display:block}thead{display:none}
+  tr{background:var(--bg);border-radius:14px;margin:0 0 10px;padding:6px 10px}
+  td{border:0;padding:4px 0;display:flex;gap:10px;justify-content:space-between;text-align:right}
+  td::before{content:attr(data-r);color:var(--muted);font-weight:800;text-align:left;flex:none}
+  td.cli{flex-direction:column;text-align:left}td.cli::before{display:none}
+  td.num{text-align:right}
+  .acoes{justify-content:flex-end}
+}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="topo">
+  <a class="marca" href="./"><svg width="40" height="40" viewBox="0 0 44 44" aria-hidden="true"><path d="M22 3l5.6 11.6 12.7 1.8-9.2 9 2.2 12.6L22 32l-11.3 6 2.2-12.6-9.2-9 12.7-1.8z" fill="#F7A823" stroke="#E08A00" stroke-width="2" stroke-linejoin="round"/><circle cx="17.5" cy="21" r="2" fill="#1B2A5E"/><circle cx="26.5" cy="21" r="2" fill="#1B2A5E"/><path d="M18 26q4 4 8 0" stroke="#1B2A5E" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span>Mundo Encantado<small>Área da administradora</small></span></a>
+  <div class="quem" id="quem" hidden><span id="quemEmail"></span><button class="bt" id="sair" type="button">Sair</button></div>
+</header>
+
+<section class="entrar" id="telaEntrar" hidden>
+  <h1>Área da administradora</h1>
+  <p id="entrarTxt">Entre com a conta Google autorizada para ver as vendas e os pedidos.</p>
+  <button class="bt prim" id="entrar" type="button">Entrar com Google</button>
+  <p class="aviso" id="entrarErro" role="alert" hidden></p>
+</section>
+
+<main id="painel" hidden>
+  <p class="aviso" id="avisoDemo" hidden>Prévia com pedidos de exemplo. Os pedidos de verdade aparecem aqui quando o Firebase for ligado.</p>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="duas">
+    <section class="painel" aria-labelledby="tDias">
+      <h2 id="tDias">Vendas pagas por dia</h2>
+      <p class="sub">Últimos 30 dias, em reais. Passe o dedo ou o mouse nas barras.</p>
+      <div class="grafico" id="grafico"></div>
+    </section>
+    <section class="painel" aria-labelledby="tTop">
+      <h2 id="tTop">Mundos mais vendidos</h2>
+      <p class="sub">Pedidos pagos. A coleção conta para todos os mundos.</p>
+      <ul class="top" id="top"></ul>
+    </section>
+  </div>
+
+  <section class="painel" aria-labelledby="tPed">
+    <h2 id="tPed">Pedidos</h2>
+    <div class="filtros">
+      <button class="chip" type="button" data-f="todos" aria-pressed="true">Todos</button>
+      <button class="chip" type="button" data-f="aguardando" aria-pressed="false">Aguardando</button>
+      <button class="chip" type="button" data-f="pago" aria-pressed="false">Pagos</button>
+      <button class="chip" type="button" data-f="cancelado" aria-pressed="false">Cancelados</button>
+      <input class="busca" id="busca" type="search" placeholder="Buscar nome, e-mail, cidade ou pedido" aria-label="Buscar pedidos">
+      <button class="bt" id="csv" type="button">Baixar planilha</button>
+    </div>
+    <table>
+      <thead><tr><th>Data</th><th>Pedido</th><th>Cliente</th><th>Cidade</th><th>Mundos</th><th class="num">Total</th><th>Situação</th><th>Ações</th></tr></thead>
+      <tbody id="linhas"></tbody>
+    </table>
+  </section>
+</main>
+
+<script src="config.js"></script>
+<script type="module">
+import { abrirBanco, MUNDOS_NOMES, SITUACOES, FORMAS } from './plataforma.js';
+
+const $ = id => document.getElementById(id);
+const brl = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const dataBR = d => d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: '2-digit' }) + ' ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const ICONE = { pago: '✓', aguardando: '⏳', cancelado: '✕' };
+const ADMINS = (window.ME_CONFIG && window.ME_CONFIG.admins) || [];
+
+let banco = null, pedidos = [], filtro = 'todos';
+
+function mundosDe(p) { return p.itens.map(i => MUNDOS_NOMES[i] || i).join(', '); }
+
+function resumo() {
+  const agora = new Date(), mes = agora.getMonth(), ano = agora.getFullYear(), hoje = agora.toDateString();
+  const pagos = pedidos.filter(p => p.situacao === 'pago'), quando = p => p.pagoEm || p.data;
+  const doMes = pagos.filter(p => quando(p).getMonth() === mes && quando(p).getFullYear() === ano);
+  const deHoje = pagos.filter(p => quando(p).toDateString() === hoje);
+  const esp = pedidos.filter(p => p.situacao === 'aguardando');
+  const clientes = new Set(pagos.map(p => (p.email || '').toLowerCase()));
+  const soma = l => l.reduce((t, p) => t + p.total, 0);
+  const nomeMes = agora.toLocaleDateString('pt-BR', { month: 'long' });
+  const cards = [
+    ['Vendas em ' + nomeMes, brl(soma(doMes)), doMes.length + (doMes.length === 1 ? ' pedido pago' : ' pedidos pagos')],
+    ['Vendas de hoje', brl(soma(deHoje)), deHoje.length + (deHoje.length === 1 ? ' pedido pago' : ' pedidos pagos')],
+    ['Aguardando pagamento', String(esp.length), brl(soma(esp)) + ' a receber'],
+    ['Clientes', String(clientes.size), 'que já pagaram, desde o início'],
+  ];
+  $('cards').innerHTML = cards.map(([r, n, d]) => `<div class="card"><div class="rot">${r}</div><div class="num">${n}</div><div class="det">${d}</div></div>`).join('');
+  grafico(pagos);
+  maisVendidos(pagos);
+}
+
+function grafico(pagos) {
+  const dias = [], dia = 864e5, base = new Date(); base.setHours(0, 0, 0, 0);
+  for (let i = 29; i >= 0; i--) dias.push({ d: new Date(base - i * dia), v: 0, n: 0 });
+  pagos.forEach(p => { const q = new Date(p.pagoEm || p.data); q.setHours(0, 0, 0, 0); const k = dias.findIndex(x => x.d.getTime() === q.getTime()); if (k >= 0) { dias[k].v += p.total; dias[k].n++; } });
+  const W = 640, H = 220, esq = 44, dir = 8, alto = 12, baixo = 26, max = Math.max(50, ...dias.map(x => x.v));
+  const passo = max <= 100 ? 25 : max <= 300 ? 50 : max <= 1000 ? 200 : 500, teto = Math.ceil(max / passo) * passo;
+  const y = v => alto + (H - alto - baixo) * (1 - v / teto), larg = (W - esq - dir) / dias.length, bw = Math.max(4, larg - 4);
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Vendas pagas por dia nos últimos 30 dias">`;
+  for (let v = 0; v <= teto; v += passo) s += `<line x1="${esq}" x2="${W - dir}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text x="${esq - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+  dias.forEach((x, i) => {
+    const x0 = esq + i * larg + (larg - bw) / 2, h = y(0) - y(x.v), r = Math.min(4, h / 2, bw / 2);
+    if (x.v > 0) s += `<path d="M${x0} ${y(0)}V${y(x.v) + r}q0 -${r} ${r} -${r}h${bw - 2 * r}q${r} 0 ${r} ${r}V${y(0)}z" fill="var(--azul)"/>`;
+    s += `<rect class="alvo" data-i="${i}" x="${esq + i * larg}" y="${alto}" width="${larg}" height="${H - alto - baixo}" fill="transparent"/>`;
+    if (i % 5 === 4 || i === 29) s += `<text x="${x0 + bw / 2}" y="${H - 8}" text-anchor="middle">${x.d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })}</text>`;
+  });
+  s += `<line x1="${esq}" x2="${W - dir}" y1="${y(0)}" y2="${y(0)}" stroke="var(--line)"/></svg><div class="dica" id="dica"></div>`;
+  const g = $('grafico'); g.innerHTML = s;
+  const dica = $('dica'), svg = g.querySelector('svg');
+  g.querySelectorAll('.alvo').forEach(a => {
+    const mostrar = () => {
+      const x = dias[+a.dataset.i], rs = svg.getBoundingClientRect(), k = rs.width / W, rg = g.getBoundingClientRect();
+      dica.textContent = x.d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' }) + ': ' + brl(x.v) + ' · ' + x.n + (x.n === 1 ? ' pedido' : ' pedidos');
+      dica.style.left = Math.min(Math.max((+a.getAttribute('x') + larg / 2) * k + (rs.left - rg.left), 90), rg.width - 90) + 'px';
+      dica.style.top = (y(x.v) * k + (rs.top - rg.top)) + 'px'; dica.classList.add('on');
+    };
+    a.addEventListener('pointerenter', mostrar); a.addEventListener('pointerdown', mostrar);
+    a.addEventListener('pointerleave', () => dica.classList.remove('on'));
+  });
+}
+
+function maisVendidos(pagos) {
+  const cont = {};
+  pagos.forEach(p => p.itens.forEach(i => { const lista = i === 'colecao' ? Object.keys(MUNDOS_NOMES).filter(k => k !== 'colecao') : [i]; lista.forEach(k => cont[k] = (cont[k] || 0) + 1); }));
+  const ord = Object.entries(cont).sort((a, b) => b[1] - a[1]).slice(0, 6), max = ord.length ? ord[0][1] : 1;
+  $('top').innerHTML = ord.length ? ord.map(([k, n]) => `<li><span>${esc(MUNDOS_NOMES[k] || k)}</span><b>${n}</b><span class="barra"><span style="width:${(n / max * 100).toFixed(1)}%"></span></span></li>`).join('') : '<li class="vazio">Nenhuma venda paga ainda.</li>';
+}
+
+function tabela() {
+  const q = $('busca').value.trim().toLowerCase();
+  const lista = pedidos.filter(p => (filtro === 'todos' || p.situacao === filtro) &&
+    (!q || [p.codigo, p.nome, p.email, p.cidade, p.tel].join(' ').toLowerCase().includes(q)));
+  if (!lista.length) { $('linhas').innerHTML = '<tr><td class="vazio" colspan="8">Nenhum pedido aqui.</td></tr>'; return; }
+  $('linhas').innerHTML = lista.map(p => {
+    const fone = String(p.tel || '').replace(/\D/g, '');
+    const acoes = p.situacao === 'aguardando'
+      ? `<button class="bt ok" type="button" data-m="pago" data-c="${esc(p.codigo)}">Marcar pago</button><button class="bt" type="button" data-m="cancelado" data-c="${esc(p.codigo)}">Cancelar</button>`
+      : `<button class="bt" type="button" data-m="aguardando" data-c="${esc(p.codigo)}">Voltar p/ aguardando</button>`;
+    return `<tr>
+      <td data-r="Data">${dataBR(p.data)}</td>
+      <td data-r="Pedido"><span class="cod">${esc(p.codigo)}</span><br><small>${esc(FORMAS[p.forma] || p.forma || '')}</small></td>
+      <td class="cli"><b>${esc(p.nome)}</b><span>${esc(p.perfil)} · <a href="mailto:${esc(p.email)}">${esc(p.email)}</a></span><span>${fone.length >= 10 ? `<a href="https://wa.me/55${fone}" target="_blank" rel="noopener">${esc(p.tel)}</a>` : esc(p.tel)}</span></td>
+      <td data-r="Cidade">${esc(p.cidade)}${p.uf ? '/' + esc(p.uf) : ''}</td>
+      <td data-r="Mundos">${esc(mundosDe(p))}</td>
+      <td data-r="Total" class="num">${brl(p.total)}</td>
+      <td data-r="Situação"><span class="sit ${esc(p.situacao)}"><span aria-hidden="true">${ICONE[p.situacao] || ''}</span>${esc(SITUACOES[p.situacao] || p.situacao)}</span></td>
+      <td data-r="Ações"><div class="acoes">${acoes}</div></td></tr>`;
+  }).join('');
+}
+
+$('linhas').addEventListener('click', async e => {
+  const b = e.target.closest('button[data-m]'); if (!b) return;
+  const p = pedidos.find(x => x.codigo === b.dataset.c), m = b.dataset.m;
+  const txt = m === 'pago' ? `Confirmar que o Pix de ${brl(p.total)} do pedido ${p.codigo} caiu na conta?` : m === 'cancelado' ? `Cancelar o pedido ${p.codigo}?` : `Voltar o pedido ${p.codigo} para "aguardando"?`;
+  if (!confirm(txt)) return;
+  b.disabled = true;
+  try { await banco.marcar(p.codigo, m); await carregar(); } catch (err) { alert('Não deu certo: ' + err.message); b.disabled = false; }
+});
+document.querySelectorAll('.chip').forEach(c => c.onclick = () => {
+  filtro = c.dataset.f; document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === c)); tabela();
+});
+$('busca').addEventListener('input', tabela);
+$('csv').onclick = () => {
+  const col = ['Data', 'Pedido', 'Situação', 'Forma', 'Total', 'Mundos', 'Nome', 'E-mail', 'Telefone', 'Cidade', 'UF', 'Perfil'];
+  const cel = v => '"' + String(v == null ? '' : v).replace(/"/g, '""').replace(/^([=+\-@])/, "'$1") + '"';
+  const linhas = pedidos.map(p => [dataBR(p.data), p.codigo, SITUACOES[p.situacao] || p.situacao, FORMAS[p.forma] || p.forma, p.total.toFixed(2).replace('.', ','), mundosDe(p), p.nome, p.email, p.tel, p.cidade, p.uf, p.perfil].map(cel).join(';'));
+  const blob = new Blob(['﻿' + [col.map(cel).join(';')].concat(linhas).join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'pedidos-mundo-encantado.csv'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+};
+
+async function carregar() { pedidos = await banco.pedidos(); resumo(); tabela(); }
+
+(async () => {
+  try { banco = await abrirBanco(); } catch (e) { $('telaEntrar').hidden = false; $('entrarErro').hidden = false; $('entrarErro').textContent = 'Não consegui ligar ao banco de dados: ' + e.message; return; }
+  if (banco.demo) { $('avisoDemo').hidden = false; $('entrar').textContent = 'Ver a prévia'; $('entrarTxt').textContent = 'O Firebase ainda não está ligado. Veja como fica com pedidos de exemplo.'; }
+  $('entrar').onclick = async () => { $('entrarErro').hidden = true; try { await banco.entrar(); } catch (e) { $('entrarErro').hidden = false; $('entrarErro').textContent = 'Não foi possível entrar: ' + e.message; } };
+  $('sair').onclick = () => banco.sair();
+  banco.aoMudarUsuario(async u => {
+    const ok = u && (banco.demo || ADMINS.includes((u.email || '').toLowerCase()));
+    $('telaEntrar').hidden = !!ok; $('painel').hidden = !ok; $('quem').hidden = !u;
+    $('quemEmail').textContent = u ? u.email : '';
+    if (u && !ok) { $('entrarErro').hidden = false; $('entrarErro').textContent = 'A conta ' + u.email + ' não tem acesso a esta área.'; }
+    if (ok) { try { await carregar(); } catch (e) { $('painel').hidden = true; $('telaEntrar').hidden = false; $('entrarErro').hidden = false; $('entrarErro').textContent = 'Sem permissão para ler os pedidos: ' + e.message; } }
+  });
+})();
+</script>
+</body>
+</html>
