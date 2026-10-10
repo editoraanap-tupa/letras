@@ -1411,14 +1411,27 @@ button.pcard:active,.capa:active,.dia:active,.numb:active,.mom:active,.lapis:act
 .ursab.ok{box-shadow:inset 0 0 0 4px var(--ok),0 6px 0 #2E8B3D;background:var(--ok-soft)}
 .ursab .dono{position:absolute;right:-16px;top:-26px;font-size:clamp(50px,12vw,70px);line-height:0;animation:jump .5s ease both}
 /* placas da floresta */
-.fscene.encruz .setab{position:absolute;padding:1.2cqw 3.4cqw 1.2cqw 2.4cqw;border:0;background:#E0A650;box-shadow:inset 0 0 0 .5cqw #A66E2A,0 .8cqw 0 #8A5530;font:900 max(3.6cqw,13px)/1 var(--display);color:#1B2A5E;letter-spacing:.05em;cursor:pointer;z-index:2}
-.setab.s0{left:6%;top:24%;clip-path:polygon(12% 0,100% 0,100% 100%,12% 100%,0 50%);padding-left:4.4cqw}
-.setab.s1{left:50%;top:10%;translate:-50% 0;clip-path:polygon(0 0,100% 0,100% 80%,50% 100%,0 80%);padding-bottom:2.6cqw}
-.setab.s2{right:6%;top:24%;clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%);padding-right:4.4cqw}
-.setab.ok{background:#9BE07A}
-.fs.ff{transition:left 1.2s ease,bottom 1.2s ease,transform 1.2s}
-.fs.ff.voa0{left:18%!important;bottom:40%!important}.fs.ff.voa1{bottom:46%!important}.fs.ff.voa2{left:82%!important;bottom:40%!important}
-.fs.dest{transition:opacity 1s .8s}
+.fscene.encruz .setab{position:absolute;padding:1.4cqw 3.6cqw 1.4cqw 2.6cqw;border:0;background:repeating-linear-gradient(0deg,#E7B35F 0 1.1cqw,#DCA24E 1.1cqw 1.3cqw);box-shadow:inset 0 0 0 .55cqw #9C6326,0 .9cqw 0 #7A4A1E;font:900 max(3.8cqw,14px)/1 var(--display);color:#4A2A0E;letter-spacing:.06em;text-shadow:0 .25cqw 0 rgba(255,255,255,.45);cursor:pointer;z-index:3;transition:transform .2s,filter .2s}
+.fscene.encruz .setab::before,.fscene.encruz .setab::after{content:"";position:absolute;top:50%;width:1.1cqw;height:1.1cqw;margin-top:-.55cqw;border-radius:50%;background:#7A4A1E;box-shadow:inset .2cqw .2cqw 0 rgba(255,255,255,.4)}
+.fscene.encruz .setab::before{left:3.4cqw}.fscene.encruz .setab::after{right:3.4cqw}
+.fscene.encruz .setab.s0::before{left:5cqw}.fscene.encruz .setab.s2::after{right:5cqw}
+.fscene.encruz .setab:hover{filter:brightness(1.07);transform:scale(1.04)}
+.fscene.encruz .setab b{position:relative;z-index:1;padding:0 1.2cqw}
+.setab.s0{left:5%;top:22%;clip-path:polygon(11% 0,100% 0,100% 100%,11% 100%,0 50%);padding-left:5cqw}
+.setab.s1{left:50%;top:7%;translate:-50% 0;clip-path:polygon(0 0,100% 0,100% 78%,50% 100%,0 78%);padding-bottom:3cqw}
+.setab.s2{right:5%;top:22%;clip-path:polygon(0 0,89% 0,100% 50%,89% 100%,0 100%);padding-right:5cqw}
+.setab.ok{background:repeating-linear-gradient(0deg,#A9E58A 0 1.1cqw,#98D978 1.1cqw 1.3cqw)!important;box-shadow:inset 0 0 0 .55cqw #3F8A2E,0 .9cqw 0 #2B6A20!important}
+.fscene.encruz .poste{position:absolute;z-index:2;width:2.2cqw;border-radius:.6cqw .6cqw 0 0;background:linear-gradient(90deg,#8A5530,#A66E3A 45%,#7A4A1E);box-shadow:0 .4cqw 0 rgba(0,0,0,.12)}
+.fscene.encruz .poste::after{content:"";position:absolute;left:50%;bottom:-.8cqw;width:7cqw;height:1.8cqw;translate:-50% 0;border-radius:50%;background:rgba(0,0,0,.14)}
+.fscene.encruz .poste.p0{left:17%;top:30%;height:30%}
+.fscene.encruz .poste.p1{left:50%;top:15%;height:30%;translate:-50% 0}
+.fscene.encruz .poste.p2{right:17%;top:30%;height:30%}
+.fs.ff{transition:left 1.2s ease,bottom 1.2s ease,transform 1.2s;z-index:4}
+.fs.ff.voa0{left:34%!important;bottom:26%!important}.fs.ff.voa1{left:64%!important;bottom:30%!important}.fs.ff.voa2{left:66%!important;bottom:26%!important}
+.fs.dest{bottom:30%!important;font-size:19cqw!important;z-index:3;transition:opacity 1s .7s,transform 1s .7s;transform:scale(.6)}
+.fs.dest.on{opacity:1!important;transform:scale(1)}
+.fs.dest.on::before{content:"";position:absolute;left:50%;top:50%;width:1.5em;height:1.5em;translate:-50% -45%;border-radius:50%;background:radial-gradient(rgba(255,240,150,.9),rgba(255,240,150,0) 70%);z-index:-1;animation:destBr 2s ease-in-out infinite}
+@keyframes destBr{50%{scale:1.15;opacity:.7}}
 .fs.dest>span{display:block;width:1em;line-height:0}.fs.dest svg{width:100%;height:auto;overflow:visible}
 /* nomes */
 .varal.perg{background:linear-gradient(#FFF6DC,#F6E3BE);box-shadow:inset 0 0 0 5px #D9B07A,0 7px 0 #B98248,0 16px 18px rgba(0,0,0,.14);border-radius:12px 12px 26px 26px}
@@ -1465,8 +1478,12 @@ button.pcard:active,.capa:active,.dia:active,.numb:active,.mom:active,.lapis:act
 .slotp.cheio{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
 .pic.sel{box-shadow:inset 0 0 0 5px var(--c1),0 6px 0 rgba(0,0,0,.2);transform:translateY(-4px)}
 /* roda dos pedacinhos */
-.rodinha{width:clamp(120px,30vw,170px);line-height:0;transition:transform .5s cubic-bezier(.3,1.4,.6,1);transform:rotate(var(--rot,0deg))}
-.rodinha .tw{width:100%;height:auto}
+.rodinha{position:relative;width:clamp(170px,40vw,250px);aspect-ratio:1;line-height:0;rotate:var(--rot,0deg);transition:rotate .6s cubic-bezier(.3,1.3,.6,1)}
+.rodinha .rd-chao{position:absolute;inset:10%;border-radius:50%;background:radial-gradient(circle,#F3E9CF 0 58%,transparent 59%);box-shadow:inset 0 0 0 .9cqw rgba(232,53,46,.35);outline:.6cqw dashed rgba(232,53,46,.45);outline-offset:-5%}
+.rodinha .rd-k{position:absolute;translate:-50% -55%;font-size:clamp(46px,11vw,70px);line-height:0;rotate:calc(var(--rot,0deg) * -1);transition:rotate .6s cubic-bezier(.3,1.3,.6,1)}
+.rodinha .rd-k .pers{font-size:inherit}
+.rodinha.passo .rd-k{animation:rdPasso .6s ease}
+@keyframes rdPasso{40%{translate:-50% -70%}}
 .tamb .pers{font-size:clamp(90px,22vw,130px)}
 /* pares que rimam */
 .pares{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
@@ -1501,9 +1518,22 @@ button.pcard:active,.capa:active,.dia:active,.numb:active,.mom:active,.lapis:act
 .vtira b{font:900 clamp(15px,3.8vw,22px)/1.2 var(--display);color:#1B2A5E;letter-spacing:.03em}
 .vtira.ok{box-shadow:inset 0 0 0 3px var(--ok),0 4px 0 #2E8B3D;background:var(--ok-soft);cursor:default;animation:tpop .35s ease both}
 .vtira i{font-style:normal;font-size:24px;color:#8752C8}
-.fs.gira2>*{animation:girar 8s linear infinite}
-.rodinha{width:clamp(150px,38vw,230px)}.xilo{align-items:flex-end}.tecla:nth-child(1){height:clamp(170px,40vw,240px)}.tecla:nth-child(2){height:clamp(155px,37vw,220px)}.tecla:nth-child(3){height:clamp(140px,34vw,200px)}.tecla:nth-child(4){height:clamp(125px,31vw,180px)}
+.fs.gira2>*{animation:rodaDanca 1.6s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes rodaDanca{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-4%)}}
+.rodinha{width:clamp(190px,40vw,260px)}.xilo{align-items:flex-end}.tecla:nth-child(1){height:clamp(170px,40vw,240px)}.tecla:nth-child(2){height:clamp(155px,37vw,220px)}.tecla:nth-child(3){height:clamp(140px,34vw,200px)}.tecla:nth-child(4){height:clamp(125px,31vw,180px)}
 .rodakids.gira .rk2{animation:girar 6s linear reverse}
+
+.rodakids.gira .rk-c{animation:girar 6s linear reverse}
+
+.qplaca{max-width:min(92%,640px);margin:0 auto 14px;padding:10px 22px;border-radius:20px;background:#fff;box-shadow:0 0 0 4px #8752C8,0 7px 0 #5E3496;font:800 clamp(18px,3.4vw,26px)/1.25 var(--display,'Baloo 2'),system-ui;color:#1B2A5E;text-align:center}
+.qrow{display:flex;flex-wrap:wrap;gap:14px 18px;justify-content:center;align-items:stretch}
+.qcard{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:8px;min-width:clamp(120px,22vw,170px);padding:12px 14px 10px;border:0;border-radius:24px;background:#fff;box-shadow:inset 0 0 0 4px #8752C8,0 7px 0 #5E3496;cursor:pointer}
+.qcard:hover{filter:brightness(1.04)}
+.qimgs{display:flex;align-items:flex-end;justify-content:center;gap:4px}
+.qimgs .tw{width:clamp(78px,15vw,118px);height:clamp(78px,15vw,118px)}
+.qcard.tres .qimgs .tw{width:clamp(50px,9vw,78px);height:clamp(50px,9vw,78px)}
+.qw{font:800 clamp(15px,2.6vw,20px)/1.1 var(--display,'Baloo 2'),system-ui;color:#1B2A5E;letter-spacing:.04em}
+.qcard.ok{box-shadow:inset 0 0 0 5px var(--ok,#3FA535),0 7px 0 #2B7524;background:#EFFBEA}
 
 /* ===== extras: acessibilidade e acabamento ===== */
 html.az body{zoom:var(--az,1)}
@@ -1527,24 +1557,24 @@ html.az body{zoom:var(--az,1)}
 .tapr{position:fixed;z-index:950;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;pointer-events:none;border:3px solid rgba(255,200,61,.95);animation:tapr .6s ease-out forwards}
 @keyframes tapr{to{transform:scale(4.2);opacity:0}}
 /* acabamento: todos os botões “afundam” ao tocar */
-button:not(.acc-c):not(.acc-x):active{transform:translateY(2px) scale(.97)}
+
 @media (hover:hover){.pic:hover,.pcard:hover,.meio:hover,.plaq:hover,.tile:hover{filter:brightness(1.04) saturate(1.08)}}
 /* menos movimento */
 html.calmo *,html.calmo *::before,html.calmo *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
-/* alto contraste: mantém as cores do desenho, reforça textos e contornos */
-html.hc{--ink:#000;--muted:#111;--line:#000}
-html.hc body{color:#000}
-html.hc :is(h1,h2,h3,p,label,.w,#ptext,.ptext,.bubble,.prompt,.tag,.act-b p){color:#000!important;text-shadow:none!important}
-html.hc :is(button,.pcard,.pic,.meio,.plaq,a.act,.bubble,.card,.panel){outline:3px solid #000;outline-offset:1px}
-html.hc :is(.btn.go,.btn.primary,.acc-c[aria-checked="true"]){outline-color:#000;box-shadow:0 0 0 2px #fff inset}
-html.hc .acc-p{box-shadow:0 0 0 3px #000,0 14px 30px rgba(0,0,0,.3);color:#000}
-html.hc a:not(.act):not(.btn){color:#00449E!important;text-decoration:underline!important}
-html.hc .acc-b{background:#000;box-shadow:0 0 0 4px #FFD23F}
-html.hc .acc-c{color:#000;box-shadow:inset 0 0 0 2px #000}
-html.hc .acc-c[aria-checked="true"]{background:#000;color:#fff}
-html.hc :is(.ok,.done){outline:4px solid #00632A!important}
-html.hc :focus-visible{outline:4px solid #FFB000!important;outline-offset:2px}
 @media print{.acc-b,.acc-p,.vis{display:none}}
+/* área de resposta sim/não: botões de resposta, diferentes das fichas */
+.simnao{display:flex!important;flex-wrap:wrap;gap:12px 18px;justify-content:center;align-items:center;width:fit-content;max-width:min(100%,600px);margin:14px auto 0!important;padding:12px 18px 18px;border-radius:28px;background:rgba(255,255,255,.92);box-shadow:0 0 0 4px #FFD25A,0 8px 0 rgba(0,0,0,.1)}
+.simnao::before{content:"Toque na sua resposta:";flex-basis:100%;text-align:center;font:800 17px/1.2 'Nunito',system-ui,sans-serif;color:#1B2A5E;letter-spacing:.02em}
+.simnao .sn{display:inline-flex!important;flex-direction:row!important;align-items:center;justify-content:flex-start;gap:12px;width:auto!important;min-width:min(40vw,210px);min-height:74px;height:auto!important;padding:8px 26px 8px 10px!important;border:0!important;border-radius:999px!important;background:var(--snb)!important;box-shadow:0 7px 0 var(--snd)!important;outline:0;cursor:pointer;animation:snIn .4s ease both}
+.simnao .sn:first-of-type{--snb:#3FA535;--snd:#2B7524}
+.simnao .sn:last-of-type{--snb:#EE4F7B;--snd:#B8315A;animation-delay:.08s}
+.simnao .sn>img.tw,.simnao .sn>.tw{flex:none;width:54px!important;height:54px!important;padding:7px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 3px rgba(0,0,0,.08);font-size:40px}
+.simnao .sn>span{color:#fff!important;font:800 clamp(19px,4.4vw,24px)/1.05 'Baloo 2','Nunito',system-ui,sans-serif;letter-spacing:.03em;text-shadow:0 2px 0 rgba(0,0,0,.18);white-space:nowrap}
+.simnao .sn:hover{filter:brightness(1.06)}
+.simnao .sn:active{box-shadow:0 2px 0 var(--snd)!important;translate:0 5px}
+.simnao .sn.ok{box-shadow:0 0 0 5px #FFD25A,0 7px 0 var(--snd)!important}
+@keyframes snIn{from{opacity:0;translate:0 12px}}
+@media (max-width:480px){.simnao{padding:10px 12px 16px;gap:10px}.simnao .sn{min-width:0;flex:1 1 140px;padding:6px 16px 6px 8px!important;min-height:64px}.simnao .sn>img.tw{width:44px!important;height:44px!important}}
 </style>
 </head>
 <body>
@@ -2130,6 +2160,8 @@ palmas:`${FSH(72,134,50)}<g transform="rotate(-16 50 80)"><rect x="30" y="40" wi
 for(const k in PL)XIMG[k]='data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144">${PL[k]}</svg>`);
 /* ---------- roda: instrumentos e brinquedos desenhados (figuras próprias desta atividade) ---------- */
 const RD={
+janela:`${FSH(72,134,48)}<rect x="22" y="14" width="100" height="106" rx="8" fill="#C98A3E"/><rect x="30" y="22" width="84" height="90" rx="4" fill="#9ED8F5"/><path d="M30 22h84v40q-42-14-84 0z" fill="#BFE6FF"/><circle cx="96" cy="40" r="9" fill="#FFE590"/><path d="M38 96q14-12 28-2t22-6 26 4v20H30v-8z" fill="#9BD96F"/><path d="M72 22v90M30 67h84" stroke="#C98A3E" stroke-width="6"/><path d="M36 30l14 14M38 76l10 10" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/><path d="M24 12q-6 40 4 104q10-46 12-100z" fill="#E8352E"/><path d="M120 12q6 40-4 104q-10-46-12-100z" fill="#E8352E"/><path d="M18 8h108v8H18z" fill="#8A5530"/><rect x="16" y="118" width="112" height="16" rx="4" fill="#B5763A"/><g><circle cx="38" cy="114" r="6" fill="#EE4F7B"/><circle cx="56" cy="112" r="6" fill="#FFD25A"/><circle cx="88" cy="112" r="6" fill="#8752C8"/><circle cx="106" cy="114" r="6" fill="#EE4F7B"/></g>`,
+mao:`${FSH(72,136,34)}<path d="M50 116q-4-30 0-46l-12-26q-3-8 4-10t10 6l10 22V22q0-8 7-8t7 8v40V14q0-8 7-8t7 8v48V20q0-8 7-8t7 8v46V34q0-8 7-8t7 8v40q0 30-14 44q-6 6-14 6H62q-8 0-12-8z" fill="#F3C39B" stroke="#D99A6C" stroke-width="2.4" stroke-linejoin="round"/><path d="M66 60v-6M80 58v-8M94 62v-6" stroke="#D99A6C" stroke-width="2" stroke-linecap="round"/><path d="M58 92q14 10 34 2" fill="none" stroke="#D99A6C" stroke-width="2" stroke-linecap="round"/><rect x="50" y="118" width="58" height="16" rx="6" fill="#2490D6"/><path d="M50 124h58" stroke="#fff" stroke-width="2" opacity=".5"/>`,
 chocalho:`${FSH(72,136,30)}<path d="M72 132V84" stroke="#C98A3E" stroke-width="10" stroke-linecap="round"/><ellipse cx="72" cy="56" rx="34" ry="38" fill="#3DAA35"/><path d="M40 50q32 14 64 0M40 66q32 14 64 0" fill="none" stroke="#FFD23F" stroke-width="5"/><g fill="#fff"><circle cx="58" cy="36" r="4"/><circle cx="86" cy="40" r="4"/><circle cx="72" cy="80" r="4"/></g><path d="M50 32q8-12 20-14" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="5" stroke-linecap="round"/><g stroke="#2B3350" stroke-width="3" stroke-linecap="round"><path d="M18 40l10 4M14 60h10M18 80l10-4M126 40l-10 4M130 60h-10M126 80l-10-4"/></g>`,
 pandeiro:`${FSH(72,134,52)}<circle cx="72" cy="72" r="56" fill="#E0A650"/><circle cx="72" cy="72" r="44" fill="#FFF6E8"/><circle cx="72" cy="72" r="44" fill="none" stroke="#E6DCC8" stroke-width="2"/>${[0,1,2,3,4].map(i=>{const a=i*72*Math.PI/180,x=72+50*Math.cos(a),y=72+50*Math.sin(a);return `<rect x="${(x-8).toFixed(1)}" y="${(y-5).toFixed(1)}" width="16" height="10" rx="2" fill="#2B3350"/><circle cx="${(x-3).toFixed(1)}" cy="${y.toFixed(1)}" r="4.4" fill="#FFD23F" stroke="#C99A2E"/><circle cx="${(x+3).toFixed(1)}" cy="${y.toFixed(1)}" r="4.4" fill="#FFD23F" stroke="#C99A2E"/>`}).join('')}<path d="M44 52q10-14 26-16" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".6"/>`,
 sino:`${FSH(72,136,40)}<path d="M72 14v10" stroke="#8A5530" stroke-width="6" stroke-linecap="round"/><path d="M72 22c-26 0-34 24-34 52c0 20-10 30-18 36h104c-8-6-18-16-18-36c0-28-8-52-34-52z" fill="#FFD23F"/><path d="M72 22c26 0 34 24 34 52c0 20 10 30 18 36H96q-6-10-6-36q0-34-18-52z" fill="#F7B500" opacity=".6"/><rect x="18" y="108" width="108" height="10" rx="5" fill="#E0A21A"/><circle cx="72" cy="126" r="9" fill="#C99A2E"/><path d="M54 46q4-12 14-16" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".6"/>`,
@@ -2138,7 +2170,12 @@ ioio:`${FSH(72,136,36)}<path d="M72 6v52" stroke="#8A94A8" stroke-width="2.4"/><
 bilboque:`${FSH(72,136,34)}<rect x="62" y="70" width="20" height="62" rx="8" fill="#C98A3E"/><path d="M50 72h44l-8-16H58z" fill="#E8352E"/><path d="M72 56V24" stroke="#C98A3E" stroke-width="6" stroke-linecap="round"/><path d="M78 62q30-6 30-34" fill="none" stroke="#8A94A8" stroke-width="2.4" stroke-dasharray="4 3"/><circle cx="104" cy="22" r="16" fill="#2490D6"/><circle cx="104" cy="22" r="4" fill="#0F4A78"/><path d="M94 14q4-6 10-6" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".6"/>`,
 cavalinho:`${FSH(72,136,46)}<path d="M42 132L94 40" stroke="#C98A3E" stroke-width="9" stroke-linecap="round"/><path d="M88 22q24-8 34 12l-6 14q-6-4-14-2l-8 10q-12-8-16-22q2-8 10-12z" fill="#F3D39A"/><path d="M86 22q-8 6-6 20l10-2q-4-10 2-18z" fill="#8A5530"/><circle cx="108" cy="30" r="3" fill="#2A1B14"/><path d="M90 16l4-10 6 10z" fill="#F3D39A"/><path d="M98 52l20 10" stroke="#E8352E" stroke-width="4"/><circle cx="42" cy="132" r="9" fill="#2490D6"/>`,
 formiga:`${FSH(72,124,44)}<ellipse cx="30" cy="96" rx="20" ry="16" fill="#3A2A20"/><ellipse cx="66" cy="96" rx="14" ry="12" fill="#3A2A20"/><circle cx="102" cy="88" r="16" fill="#3A2A20"/><path d="M110 74q10-22 22-24M100 72q2-24 12-30" fill="none" stroke="#3A2A20" stroke-width="3" stroke-linecap="round"/><g stroke="#3A2A20" stroke-width="3.4" stroke-linecap="round" fill="none"><path d="M60 104l-12 18M66 106v20M72 104l12 18M56 90l-14-14M72 88l12-16"/></g><circle cx="108" cy="84" r="4" fill="#fff"/><circle cx="109" cy="84" r="2" fill="#2A1B14"/>`,
-roda:`${FSH(72,134,62)}<circle cx="72" cy="78" r="44" fill="none" stroke="#FFD23F" stroke-width="5" stroke-dasharray="3 9" stroke-linecap="round"/>${[0,1,2,3,4,5].map(i=>{const a=(i*60-90)*Math.PI/180,x=72+46*Math.cos(a),y=78+46*Math.sin(a),c=['#EE4F7B','#2490D6','#3DAA35','#F7A823','#8752C8','#16A3B0'][i];return `<circle cx="${x.toFixed(1)}" cy="${(y-6).toFixed(1)}" r="9" fill="#F3C39B"/><path d="M${(x-9).toFixed(1)} ${(y+18).toFixed(1)}q9-22 18 0z" fill="${c}"/>`}).join('')}`};
+roda:`${(()=>{const K=(x,y,sc,c,h,sk,f)=>`<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${sc.toFixed(2)})"><ellipse cy="1" rx="10" ry="2.6" fill="#000" opacity=".12"/><path d="M-5 0v-9M5 0v-9" stroke="#3B4A6B" stroke-width="4" stroke-linecap="round"/><path d="M-9-27q9-5 18 0l4 18q-13 5-26 0z" fill="${c}"/><path d="M-9-24l-8 7M9-24l8 7" stroke="${sk}" stroke-width="4" stroke-linecap="round"/><circle cy="-36" r="10" fill="${sk}"/>${f?`<path d="M-10-36q0-12 10-12t10 12q-4-6-10-6t-10 6z" fill="${h}"/><circle cx="-11" cy="-33" r="4" fill="${h}"/><circle cx="11" cy="-33" r="4" fill="${h}"/>`:`<path d="M-10-35q0-13 10-13t10 13q-5-5-10-4t-10 4z" fill="${h}"/>`}<circle cx="-3.5" cy="-36" r="1.5" fill="#1F2A44"/><circle cx="3.5" cy="-36" r="1.5" fill="#1F2A44"/><path d="M-3-31.5q3 2.6 6 0" fill="none" stroke="#B5455A" stroke-width="1.4" stroke-linecap="round"/><circle cx="-6" cy="-32.5" r="1.6" fill="#FF8FA8" opacity=".7"/><circle cx="6" cy="-32.5" r="1.6" fill="#FF8FA8" opacity=".7"/></g>`;
+ const C=['#EE4F7B','#2490D6','#3DAA35','#F7A823','#8752C8','#16A3B0'],H=['#5A3418','#2A1B14','#E0A23A','#8A4D24','#2A1B14','#C9792E'],SK=['#F3C39B','#C98B5E','#F3C39B','#8D5A3B','#E2A97C','#F0BE96'];
+ const P=[0,1,2,3,4,5].map(k=>{const a=(k*60+30)*Math.PI/180;return{k,x:72+50*Math.cos(a),y:84+30*Math.sin(a),f:Math.sin(a)}}).map(p=>Object.assign(p,{sc:.66+p.f*.2}));
+ const kid=p=>K(p.x,p.y,p.sc,C[p.k],H[p.k],SK[p.k],p.k%2===0);
+ const mao=P.map((p,k)=>{const q=P[(k+1)%6];return `<path d="M${p.x.toFixed(1)} ${(p.y-21*p.sc).toFixed(1)}L${q.x.toFixed(1)} ${(q.y-21*q.sc).toFixed(1)}" stroke="${SK[p.k]}" stroke-width="${(3.6*(p.sc+q.sc)/2).toFixed(1)}" stroke-linecap="round"/>`}).join('');
+ return `<ellipse cx="72" cy="88" rx="64" ry="34" fill="#F3E3B8" stroke="#E2C98A" stroke-width="2"/><ellipse cx="72" cy="88" rx="44" ry="20" fill="none" stroke="#E2C98A" stroke-width="1.6" stroke-dasharray="4 5"/>${P.filter(p=>p.f<0).map(kid).join('')}${mao}${P.filter(p=>p.f>=0).map(kid).join('')}`})()}`};
 for(const k in RD)XIMG[k]='data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144">${RD[k]}</svg>`);
 /* ---------- roda: dados e cenários ---------- */
 const ticoFig=cls=>el('span',{class:'pers teo '+(cls||''),html:RAB});
@@ -2149,8 +2186,8 @@ const PR={TAMBOR:['TAMBOR','tambor','o',['TAM','BOR']],CHOCALHO:['CHOCALHO','cho
  BONECA:['BONECA','boneca','a',['BO','NE','CA']],CARRINHO:['CARRINHO','carro','o',['CAR','RI','NHO']],PIPA:['PIPA','🪁','a',['PI','PA']],CORDA:['CORDA','corda','a',['COR','DA']],IOIO:['IOIÔ','ioio','o',['I','O','IÔ']],
  BILBOQUE:['BILBOQUÊ','bilboque','o',['BIL','BO','QUÊ']],CAVALINHO:['CAVALINHO','cavalinho','o',['CA','VA','LI','NHO']],BOI:['BOI','boi','o',['BOI']],FORMIGUINHA:['FORMIGUINHA','formiga','a',['FOR','MI','GUI','NHA']],
  SOL:['SOL','☀','o',['SOL']],PASSARINHO:['PASSARINHO','🐦','o',['PAS','SA','RI','NHO']],URSO:['URSO','urso','o',['UR','SO']],DADO:['DADO','dado','o',['DA','DO']],BALAO:['BALÃO','balao','o',['BA','LÃO']],
- MAO:['MÃO','palmas','a',['MÃO']],PAO:['PÃO','pao','o',['PÃO']],SAPO:['SAPO','🐸','o',['SA','PO']],GATO:['GATO','🐱','o',['GA','TO']],PATO:['PATO','🦆','o',['PA','TO']],UVA:['UVA','uva','a',['U','VA']],
- FLOR:['FLOR','🌷','a',['FLOR']],ESTRELA:['ESTRELA','estrela','a',['ES','TRE','LA']],JANELA:['JANELA','🏠','a',['JA','NE','LA']],PANELA:['PANELA','panela','a',['PA','NE','LA']],RODA:['RODA','roda','a',['RO','DA']]};
+ MAO:['MÃO','mao','a',['MÃO']],PAO:['PÃO','pao','o',['PÃO']],SAPO:['SAPO','🐸','o',['SA','PO']],GATO:['GATO','🐱','o',['GA','TO']],PATO:['PATO','🦆','o',['PA','TO']],UVA:['UVA','uva','a',['U','VA']],
+ FLOR:['FLOR','🌷','a',['FLOR']],ESTRELA:['ESTRELA','estrela','a',['ES','TRE','LA']],JANELA:['JANELA','janela','a',['JA','NE','LA']],PANELA:['PANELA','panela','a',['PA','NE','LA']],RODA:['RODA','roda','a',['RO','DA']]};
 const psnd=e=>{const k=EMOSND[ek(e)];if(k&&sfx[k])sfx[k]();else sfx.pop()};
 
 /* a praça, para a roda (320 x 200) */
@@ -2363,7 +2400,7 @@ const AHIST=[
  {s:'chime',t:'Era domingo. O Tico acordou cedo e bateu: tum, tum, tum!',sp:[['TICO',50,8,18,'Tico','a-hop']]},
  {s:'chirp',t:'As crianças ouviram o tambor e foram para a praça.',sp:[[kid('ANA'),24,8,15,'Ana','a-hop'],[kid('DAVI'),44,8,15,'Davi'],['TICO',66,8,15,'Tico']]},
  {s:'boing',t:'Cada uma levou um brinquedo: pião, peteca e bola.',sp:[['piao',28,10,10,'pião','a-hop'],['peteca',50,14,10,'peteca'],['bola',72,8,10,'bola','a-hop']]},
- {s:'win',t:'Fizeram uma roda bem grande e cantaram juntos. Que domingo alegre!',sp:[['roda',50,8,30,'roda','gira2'],['TICO',50,30,12,'Tico','a-hop']]}];
+ {s:'win',t:'Fizeram uma roda bem grande e cantaram juntos. Que domingo alegre!',sp:[['roda',50,8,30,'roda','gira2'],['TICO',20,8,14,'Tico','a-hop']]}];
 function cenaR(pg){const s=el('div',{class:'fscene',html:SCN.praca}),leg=el('div',{class:'legenda adult'},'Toque nas figuras para ouvir as palavras.');
   pg.sp.forEach(([f,x,yb,w,word,a])=>{const b=el('button',{class:'fs '+(a||''),type:'button','aria-label':word,style:`left:${x}%;bottom:${yb}%;font-size:${w}cqw`},f==='TICO'?ticoFig():fig(f));
     b.onclick=()=>{b.classList.remove('tp');void b.offsetWidth;b.classList.add('tp');if(typeof f==='string'&&f!=='TICO')psnd(f);else sfx.drum();speak(word+'.');leg.replaceChildren(wordTiles(word.toUpperCase()))};s.append(b)});return[s,leg]}
@@ -2444,8 +2481,8 @@ const GAMES=[
  round(i){const [w,e,a,ss]=PR[['PIAO','PETECA','PANDEIRO','CAVALINHO','BILBOQUE'][i]],w0=low(w),n=ss.length;let k=0;
   api.prompt(i===0?`Vamos girar a roda! A palavra é ${w0}. Toque no Tico: a roda dá um passo para cada pedacinho.`:`A palavra é ${w0}. Gire a roda, um passo para cada pedacinho!`);
   const card=el('button',{class:'pcard',type:'button','aria-label':w0},emo(e),el('span',{class:'w'},w));card.onclick=()=>{psnd(e);speak(w0+'.')};
-  const r=el('div',{class:'rodinha'},E('roda')),t=el('button',{class:'tamb',type:'button','aria-label':'Tico: toque para cada pedacinho'},ticoFig()),fila=el('div',{class:'fila-b'});
-  t.onclick=()=>{if(k>=n)return;r.style.setProperty('--rot',((k+1)*60)+'deg');fila.append(el('span',{class:'pbal pc',style:`--pc:var(--${COLS[k%6]})`},ss[k]));sfx.drum();speak(sayP(ss[k])+'.');k++;if(k>=n)api.later(()=>api.win(`${Cap(w0)} tem estes pedacinhos: ${ss.map(sayP).join(', ')}.`,fila),700)};
+  const r=el('div',{class:'rodinha'},el('span',{class:'rd-chao'}),...amigos(6).map((nm0,j)=>{const ang=(j/6)*Math.PI*2-Math.PI/2;return el('span',{class:'rd-k',style:`left:${(50+40*Math.cos(ang)).toFixed(1)}%;top:${(50+40*Math.sin(ang)).toFixed(1)}%`},fig(kid(nm0)))})),t=el('button',{class:'tamb',type:'button','aria-label':'Tico: toque para cada pedacinho'},ticoFig()),fila=el('div',{class:'fila-b'});
+  t.onclick=()=>{if(k>=n)return;r.style.setProperty('--rot',((k+1)*60)+'deg');r.classList.remove('passo');void r.offsetWidth;r.classList.add('passo');fila.append(el('span',{class:'pbal pc',style:`--pc:var(--${COLS[k%6]})`},ss[k]));sfx.drum();speak(sayP(ss[k])+'.');k++;if(k>=n)api.later(()=>api.win(`${Cap(w0)} tem estes pedacinhos: ${ss.map(sayP).join(', ')}.`,fila),700)};
   cur.hint=()=>k<n?t:null;stage.append(card,el('div',{class:'row',style:'align-items:center;justify-content:center;gap:18px'},t,r),fila)}},
 
 {id:'rimapar',e:3,bg:'fora',t:'O par que rima',ic:'balao',fig:'boneca',rounds:5,b:['EI03EF02','EI03EF07'],
@@ -2531,11 +2568,12 @@ const GAMES=[
   if(i===0){let p=0;const show=()=>{stage.innerHTML='';const pg=AHIST[p],[s,leg]=cenaR(pg),fim=p===AHIST.length-1;api.prompt(pg.t);api.later(()=>sfx[pg.s]&&sfx[pg.s](),400);
       const nx=el('button',{class:'btn'+(fim?' go':''),type:'button'},fim?'Fim da história ':'Virar a página ▶',fim?E('✅'):null);nx.onclick=()=>{if(fim){nx.hidden=true;api.win('Você leu a história do domingo na praça!',s);return}sfx.page();p++;show()};
       cur.hint=()=>nx;stage.append(el('div',{class:'page'},s,leg,el('span',{class:'pg adult'},`Página ${p+1} de ${AHIST.length}`)),el('div',{class:'hero-act'},p>0?el('button',{class:'btn soft',type:'button',onclick:()=>{sfx.page();p--;show()}},'◀ Voltar'):null,nx))};show()}
-  else if(i===1){const QS=[['O que as crianças levaram para a praça?',['piao','peteca','bola'],['pao','uva','flor'],'Pião, peteca e bola!'],['O que o Tico fez para chamar as crianças?',['tambor'],['sino','apito'],'Ele bateu o tambor: tum, tum, tum!']];let q=0;
-    const ask=()=>{stage.innerHTML='';const [txt,good,bad,ok]=QS[q];api.prompt(txt,{queue:q>0});const row=el('div',{class:'row gente'});
-      shuffle([good,...bad.map(x=>[x])]).forEach(fs=>{const isG=fs===good,b=el('button',{class:'parb',type:'button','aria-label':'resposta'},fs.map(f=>E(f)));if(isG)cur.hint=()=>b;
-        b.onclick=()=>{if(isG){b.classList.add('ok');if(q===QS.length-1)api.win(ok,b);else{api.good(b);api.fb(ok,'ok');q++;api.later(ask,1600)}}else api.miss(b,`Pense na história. ${txt}`)};row.append(b)});stage.append(row)};ask()}
-  else{api.prompt(`E você, ${nm()}? Que cantiga de roda você gosta de cantar? Cante para um adulto!`);const ok=el('button',{class:'btn go',type:'button'},'Já cantei! ',E('✅')),[s]=cenaR({sp:[['roda',50,8,30,'roda','gira2'],['TICO',50,30,12,'Tico','a-hop']]});
+  else if(i===1){const QS=[['O que as crianças levaram para a praça?',['piao','peteca','bola'],['pao','uva','🌷'],'Pião, peteca e bola!'],['O que o Tico fez para chamar as crianças?',['tambor'],['sino','apito'],'Ele bateu o tambor: tum, tum, tum!']];let q=0;
+    const QW={piao:'PIÃO',peteca:'PETECA',bola:'BOLA',pao:'PÃO',uva:'UVA','🌷':'FLOR',tambor:'TAMBOR',sino:'SINO',apito:'APITO'};
+    const ask=()=>{stage.innerHTML='';const [txt,good,bad,ok]=QS[q];api.prompt(txt,{queue:q>0});const row=el('div',{class:'qrow'});
+      shuffle([good,...bad.map(x=>[x])]).forEach(fs=>{const isG=fs===good,ws=fs.map(f=>QW[f]||''),b=el('button',{class:'qcard'+(fs.length>1?' tres':''),type:'button','aria-label':ws.join(', ').toLowerCase()},el('span',{class:'qimgs'},fs.map(f=>E(f))),el('span',{class:'qw'},ws.join(' · ')));if(isG)cur.hint=()=>b;
+        b.onclick=()=>{speak(ws.join(', ').toLowerCase()+'.');if(isG){b.classList.add('ok');if(q===QS.length-1)api.win(ok,b);else{api.good(b);api.fb(ok,'ok');q++;api.later(ask,1600)}}else api.miss(b,`Pense na história. ${txt}`)};row.append(b)});stage.append(el('div',{class:'qplaca'},txt),row)};ask()}
+  else{api.prompt(`E você, ${nm()}? Que cantiga de roda você gosta de cantar? Cante para um adulto!`);const ok=el('button',{class:'btn go',type:'button'},'Já cantei! ',E('✅')),[s]=cenaR({sp:[['roda',50,8,30,'roda','gira2'],['TICO',20,8,14,'Tico','a-hop']]});
     ok.onclick=()=>{ok.hidden=true;sfx.flauta();api.win('Que bonito! Cantiga de roda passa de pessoa para pessoa.',s)};cur.hint=()=>ok;stage.append(s,ok)}}},
 
 {id:'minhacantiga',e:6,bg:'fora',t:'Minha cantiga',ic:'nota',fig:'chocalho',rounds:3,b:['EI03EF02','EI03EF09'],
@@ -2600,6 +2638,7 @@ function renderMap(){const map=$('#map'),W=map.clientWidth;if(!W)return;mapW=W;
   node(0,'end',E('🏠'),'Casa');
   ord.forEach((g,j)=>{const k=j+1,et=ETAPAS[g.e-1],done=!!S.stars[g.id],isNext=j===nextK,locked=!done&&(!S.livre&&nextK>=0&&j>nextK||isNext&&fresh);
     const b=node(k,(done?'done ':'')+(locked?'locked ':'')+(isNext&&fresh?'pending ':'')+(isNext&&!fresh?'next':''),[E(g.ic),done?E('⭐','badge'):null,done?E(g.fig,'fig'):null,locked?E('🔒','badge lockb'):null],g.t,()=>{
+      if(b.classList.contains('locked')&&j===nextK){sfx.tap();openGame(g.id);return}
       if(b.classList.contains('locked')){sfx.no();[b,stops[tk]].forEach(n=>{if(n){n.classList.remove('wob');void n.offsetWidth;n.classList.add('wob')}});speak('Essa parada ainda está apagada. Brinque primeiro na que está piscando!');return}
       sfx.tap();openGame(g.id)});
     b.style.setProperty('--sc',`var(--${et[3]})`);b.setAttribute('aria-label',g.t+(done?', já brincou':locked?', ainda fechada':''));
@@ -2855,7 +2894,7 @@ const ST={get(k,d){try{const v=localStorage.getItem('bcl:'+k);return v==null?d:J
 const H=document.documentElement;
 /* ===== acessibilidade ===== */
 const ZOOM=[1,1.15,1.3];
-function applyAcc(){const a=ST.get('acc',{});const Z=Math.min(innerWidth,innerHeight*1.6)<640?[1,1.07,1.13]:ZOOM;H.classList.toggle('hc',!!a.hc);H.style.setProperty('--az',Z[a.z||0]);H.classList.toggle('az',!!a.z);H.classList.toggle('calmo',!!a.calmo)}
+function applyAcc(){const a=ST.get('acc',{});const Z=Math.min(innerWidth,innerHeight*1.6)<640?[1,1.07,1.13]:ZOOM;H.classList.remove('hc');H.style.setProperty('--az',Z[a.z||0]);H.classList.toggle('az',!!a.z);H.classList.toggle('calmo',!!a.calmo)}
 applyAcc();addEventListener('resize',applyAcc);
 const VEL=[['Devagar',.75],['Normal',.95],['Rápida',1.1]];
 function setVel(v){ST.set('vel',v);try{if(typeof S==='object'&&S)S.vel=v}catch(e){}}
@@ -2870,9 +2909,8 @@ function openAcc(){let p=document.getElementById('accPanel');if(p){p.remove();bt
     mk('div',{class:'acc-h'},mk('b',{},'Acessibilidade'),mk('button',{type:'button',class:'acc-x','aria-label':'Fechar',onclick:openAcc},'✕')),
     chips('Velocidade da voz',VEL.map(([t,v])=>[t,v]),(v)=>Math.abs(ST.get('vel',.95)-v)<.06,(v)=>{setVel(v);testVoice()}),
     chips('Tamanho das letras',[['Normal',0],['Grande',1],['Maior',2]],(v)=>(a.z||0)===v,(v)=>{const x=ST.get('acc',{});x.z=v;ST.set('acc',x);applyAcc()}),
-    chips('Alto contraste',[['Não',0],['Sim',1]],(v)=>(a.hc?1:0)===v,(v)=>{const x=ST.get('acc',{});x.hc=!!v;ST.set('acc',x);applyAcc()}),
     chips('Menos movimento',[['Não',0],['Sim',1]],(v)=>(a.calmo?1:0)===v,(v)=>{const x=ST.get('acc',{});x.calmo=!!v;ST.set('acc',x);applyAcc()}),
-    mk('p',{class:'acc-n'},mk('b',{},'Libras: '),'toque no botão azul com as mãos, no lado direito da tela, e depois em um texto. O VLibras traduz para Libras.'),mk('p',{class:'acc-n'},'As escolhas ficam guardadas neste aparelho e valem para todas as atividades.'));
+    mk('p',{class:'acc-n'},'As escolhas ficam guardadas neste aparelho e valem para todas as atividades.'));
   document.body.append(p);btn.setAttribute('aria-expanded','true');p.querySelector('.acc-c').focus()}
 const btn=mk('button',{type:'button',id:'accBtn',class:'acc-b','aria-label':'Acessibilidade: voz, tamanho das letras e contraste','aria-expanded':'false',onclick:openAcc,html:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4" r="2.2"/><path d="M4 7.5q8 2 16 0l.6 1.9q-3.6 1.2-6.3 1.5v3.3l2.6 7.3-1.9.7-3-6.7-3 6.7-1.9-.7 2.6-7.3v-3.3Q6.9 10.6 3.4 9.4z"/></svg>'});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('accPanel'))openAcc()});
@@ -2881,7 +2919,14 @@ document.addEventListener('pointerdown',e=>{const p=document.getElementById('acc
 function libras(){try{if(location.protocol==='file:'||window.__vl)return;window.__vl=1;
   const sc=document.createElement('script');sc.src='https://vlibras.gov.br/app/vlibras-plugin.js';sc.async=true;
   sc.onload=()=>{try{new window.VLibras.Widget('https://vlibras.gov.br/app')}catch(e){}};document.head.append(sc)}catch(e){}}
-function mount(){if(!document.getElementById('accBtn'))document.body.append(btn);counter();libras()}
+/* ===== toque garantido: se o dedo desce e sobe no mesmo botão, o clique acontece ===== */
+(function(){let d=null;const SEL='button,a[href],[role=button],.stop,.pic,.tile';
+document.addEventListener('pointerdown',e=>{if(e.button>0){d=null;return}const el=e.target.closest&&e.target.closest(SEL);d=el?{el,x:e.clientX,y:e.clientY,t:Date.now(),ok:false}:null},true);
+document.addEventListener('click',e=>{if(d&&d.el&&(d.el===e.target||d.el.contains(e.target)||e.target.contains&&e.target.contains(d.el)))d.ok=true},true);
+document.addEventListener('pointerup',e=>{const c=d;if(!c)return;const mv=Math.hypot(e.clientX-c.x,e.clientY-c.y);
+  if(mv>14||Date.now()-c.t>1200)return;setTimeout(()=>{if(c.ok||d!==c||!document.contains(c.el)||c.el.disabled||c.el.closest('.locked,[hidden]'))return;try{c.ok=true;c.el.click()}catch(x){}},450)},true);
+document.addEventListener('pointercancel',()=>{d=null},true)})();
+function mount(){if(!document.getElementById('accBtn'))document.body.append(btn)}
 /* ===== contador de acessos (hits.sh: sem cookies e sem dados pessoais) ===== */
 function counter(){try{if(location.hostname!=='editoraanap-tupa.github.io'||document.getElementById('visitas'))return;
   let f=(location.pathname.split('/').pop()||'index.html').replace(/\.html$/,'')||'index';const portal=f==='index';
